@@ -1,0 +1,24 @@
+{
+  "name": "elearning_platform",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "clientinstall": "npm install --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "deploy": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "Ana, Gabriela & César",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "react-router-dom": "^6.9.0"
+  },
+  "devDependencies": {
+    "create-react-component-folder": "^0.3.7",
+    "nodemon": "^2.0.21"
+  }
+}
