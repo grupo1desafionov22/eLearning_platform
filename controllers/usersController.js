@@ -28,15 +28,15 @@ const getUsers = async (req,res) => {
 }
 const createUser = async (req, res) => {
     console.log("Esto es el console.log de lo que introducimos por postman", req.body); 
-    let name_id = await Course.findOne({ title: req.body.course }, '_id');
+    const courseIds = await Course.find({ title: { $in: req.body.courses } }, '_id');
     const newUser = req.body; 
-    newUser.course = name_id;
-  
+    newUser.courses = courseIds;
+    
     try {
       let response = await new User(newUser);
       let answer = await response.save();
       res.status(201).json({
-        msj:`Usuario ${answer.title} guardado en el sistema.`,
+        msj:`Usuario ${answer.name} guardado en el sistema.`,
         "user": answer
       });
     } catch (err) {
