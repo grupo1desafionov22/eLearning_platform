@@ -64,7 +64,13 @@ const userLogin = async (req, res) => {
     })
 }
 
+const getCurrentUser = (req, res) => {
+    res.json({isLoggedIn: true, username: req.user.username})
+}
+
+
 module.exports = {
     registerUser,
-    userLogin
+    userLogin,
+    getCurrentUser
 }
