@@ -26,29 +26,27 @@ const getUsers = async (req,res) => {
         }
     }
 }
-    const createUser = async (req,res) => {
-        console.log("Esto es el console.log de lo que introducimos por postman", req.body); 
-        let title_id = await Course.findOne({title: req.body.course}, '_id');
-        const newUser = req.body; 
-        newUser.course= title_id;
-    
-        try{
-            let response = await new User(newUser);
-            let answer = await response.save();
-            res.status(201).json({
-                msj:`Usuario ${answer.title} guardado en el sistema.`,
-                "user": answer
-            });
-        }catch(err){
-            console.log("Este es el error que devuelve la api", err.message);
-            res.status(400).json({
-                msj: err.message
-            });
-    
-        }
+const createUser = async (req, res) => {
+    console.log("Esto es el console.log de lo que introducimos por postman", req.body); 
+    let name_id = await Course.findOne({ title: req.body.course }, '_id');
+    const newUser = req.body; 
+    newUser.course = name_id;
+  
+    try {
+      let response = await new User(newUser);
+      let answer = await response.save();
+      res.status(201).json({
+        msj:`Usuario ${answer.title} guardado en el sistema.`,
+        "user": answer
+      });
+    } catch (err) {
+      console.log("Este es el error que devuelve la api", err.message);
+      res.status(400).json({
+        msj: err.message
+      });
     }
-
-
+  }
+  
 
     module.exports = {
         getUsers,

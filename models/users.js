@@ -12,15 +12,14 @@ const objectSchema = {
         type: Number, 
         required: true 
     },
-    address: { 
+    email: { 
         type: String, 
         required: true 
     },
     course: { 
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Course' ,
-        require: true},
-
+        require: true}
 }
 
 const userSchema = mongoose.Schema(objectSchema);
