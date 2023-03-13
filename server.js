@@ -19,7 +19,7 @@ app.use(cors());
 
 // Routes:
 app.use('/', coursesRouter);
-app.use('/users', usersRouter)
+app.use('/', usersRouter)
 
 
 app.use(express.static('client/build'));
