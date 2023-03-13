@@ -9,8 +9,8 @@ const registerUser = async (req,res) => {
 
     const user = req.body
     
-    const takenUserName = await User.findOne({username: user.username});
-    const takenEmail = await User.findOne({username: user.email});
+    const takenUserName = await User.findOne({username: user.name});
+    const takenEmail = await User.findOne({email: user.email});
 
     if (takenUserName || takenEmail) {
         res.json({massage: 'Nombre de usuario o email ya registradas'})
@@ -18,7 +18,7 @@ const registerUser = async (req,res) => {
         user.password = await bcrypt.hash(req.body.password, 10);
 
         const dbUser = new User({
-            username: user.username.toLowerCase(),
+            username: user.name.toLowerCase(),
             email: user.email.toLowerCase(),
             password: user.password
         })
@@ -29,8 +29,8 @@ const registerUser = async (req,res) => {
 } 
 
 const userLogin = async (req, res) => {
-    const {username, email, password} = req.body;
-    User.findOne({username: username})
+    const {name, email, password} = req.body;
+    User.findOne({username: name})
     .then(dbUser => {
         if (!dbUser) {
             return res.json({message: 'Credenciales incorrectas'});
@@ -65,7 +65,7 @@ const userLogin = async (req, res) => {
 }
 
 const getCurrentUser = (req, res) => {
-    res.json({isLoggedIn: true, username: req.user.username})
+    res.json({isLoggedIn: true, username: req.user.name})
 }
 
 
