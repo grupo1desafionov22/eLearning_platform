@@ -5,5 +5,7 @@ const coursesController = require('../controllers/coursesController');
 
 
 coursesRouter.get('/courses', coursesController.renderCourses);
+coursesRouter.post('/courses', coursesController.createCourse);
+
 
 module.exports = coursesRouter;
