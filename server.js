@@ -1,5 +1,6 @@
 const express = require('express');
 require('./utils/db_mongo')
+require('./utils/db-pgsql');
 const cors = require('cors');
 require('dotenv').config();
 const path = require('path');
