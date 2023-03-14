@@ -1,11 +1,11 @@
 const { db } = require('../config/sqlConnection');
 const { DataTypes } = require('sequelize');
 
-const Users =db.define('User', {
+const Users =db.define('users', {
     user_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: false
     },
     password: {
       type: DataTypes.STRING,
@@ -27,7 +27,15 @@ const Users =db.define('User', {
       type: DataTypes.STRING,
       allowNull: true
     }
+  }, {
+      db,
+      modelName: 'Users',
+      tableName: 'users',
+      timestamps: 'true',
   });
+  
+  
+  Users.sync();
 
 module.exports = Users;
 
