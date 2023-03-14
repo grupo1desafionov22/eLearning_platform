@@ -1,25 +1,24 @@
-const mongoose = require('mongoose');
+const pool = require('../utils/db-pgsql');
 
-const objectSchema = {
-    name: { 
-      type: String, 
-      required: true,
-      unique: true 
-    },
-    age: { 
-      type: Number, 
-      required: true 
-    },
-    email: { 
-      type: String, 
-      required: true 
-    },
-    courses: [{ 
-      type: mongoose.Schema.Types.ObjectId, 
-      ref: 'Course' 
-    }]
+
+const getAllUsers = async (req) => {
+    let client, result;
+    try {
+      // Connect to the Postgres db and make the query
+      client = await pool.connect();
+      const data = await client.query(
+        `SELECT * FROM users;`);
+      result = data.rows;
+    } catch (err) {
+      console.log(err);
+      throw err;
+    } finally {
+      client.release(); // Close the connection
+    }
+    return result;
   };
-  
-const userSchema = mongoose.Schema(objectSchema);
-const User = mongoose.model('User', userSchema);
-module.exports = User;
+
+    module.exports = {
+        getAllUsers
+    };
+    
