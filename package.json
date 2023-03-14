@@ -19,7 +19,9 @@
     "express": "^4.18.2",
     "mongoose": "^7.0.1",
     "pg": "^8.10.0",
-    "react-router-dom": "^6.9.0"
+    "pg-hstore": "^2.3.4",
+    "react-router-dom": "^6.9.0",
+    "sequelize": "^6.29.3"
   },
   "devDependencies": {
     "create-react-component-folder": "^0.3.7",
