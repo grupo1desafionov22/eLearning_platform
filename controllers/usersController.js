@@ -1,56 +1,16 @@
-const User = require('../models/users');
-const Course = require('../models/courses');
+const users = require('../models/users');
 
-const getUsers = async (req,res) => {
-    if (req.params.id) { // con ID
-        try {
-            let user = await User.find({id:req.params.id},'-_id -__v').populate('course', '-_id -__v');
-            if (user.length > 0) {
-                res.status(200).json(user[0]); 
-            }
-            else {
-                res.status(404).json({msj:"usuario no encontrado "+req.params.id}); 
-            }    
-        }
-        catch(err){
-            res.status(400).json({msj: err.message});
-        }
-    } else { 
-        try {
-            let users = await User.find({},'-_id -__v');
-            res.status(200).json(users);
-            console.log(users)
-        }
-        catch(err){
-            res.status(400).json({msj: err.message});
-        }
+const renderUsers = async (req, res) => {
+    try {
+        const allUsers = await users.getAllUsers(req);
+        res.status(200).json(allUsers);
+        console.log(allUsers);
+    } catch (err) {
+        console.log(err);
+        res.status(500).send('Error retrieving users');
     }
 }
-const createUser = async (req, res) => {
-    console.log("Esto es el console.log de lo que introducimos por postman", req.body); 
-    const courseIds = await Course.find({ title: { $in: req.body.courses } }, '_id');
-    const newUser = req.body; 
-    newUser.courses = courseIds;
-    
-    try {
-      let response = await new User(newUser);
-      let answer = await response.save();
-      res.status(201).json({
-        msj:`Usuario ${answer.name} guardado en el sistema.`,
-        "user": answer
-      });
-    } catch (err) {
-      console.log("Este es el error que devuelve la api", err.message);
-      res.status(400).json({
-        msj: err.message
-      });
-    }
-  }
-  
 
-    module.exports = {
-        getUsers,
-        createUser
-        
-        
-    }
+module.exports = {
+    renderUsers
+}
