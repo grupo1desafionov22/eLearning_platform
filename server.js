@@ -1,5 +1,6 @@
 const express = require('express');
-require('./utils/db-pgsql');
+require('./config/sqlConnection');
+require('./schemas/users');
 const cors = require('cors');
 require('dotenv').config();
 const path = require('path');
@@ -16,7 +17,7 @@ app.use(cors());
 
 // Routes:
 // app.use('/', coursesRouter);
-app.use('/', usersRouter)
+app.use('/users', usersRouter)
 
 
 app.use(express.static('client/build'));
