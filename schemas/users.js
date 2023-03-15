@@ -5,7 +5,7 @@ const Users =db.define('users', {
     user_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: false
+      autoIncrement: true
     },
     password: {
       type: DataTypes.STRING,
@@ -13,7 +13,8 @@ const Users =db.define('users', {
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      isEmail: true, 
     },
     role: {
       type: DataTypes.STRING,
@@ -26,7 +27,25 @@ const Users =db.define('users', {
     google_id: {
       type: DataTypes.STRING,
       allowNull: true
-    }
+    },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    HIV_relationship: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    identity: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    birthdate: {
+      type: DataTypes.DATEONLY,
+      allowNull: false
+    },
+
+
   }, {
       db,
       modelName: 'Users',
