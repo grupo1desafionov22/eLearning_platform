@@ -6,7 +6,7 @@ require('dotenv').config();
 const path = require('path');
 
 // Routes modules:
-// const coursesRouter = require('./routes/coursesRoutes');
+const coursesRouter = require('./routes/coursesRoutes');
 const usersRouter = require('./routes/usersRoutes');
 
 const app = express();
@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(cors());
 
 // Routes:
-// app.use('/', coursesRouter);
+app.use('/courses', coursesRouter);
 app.use('/users', usersRouter)
 
 
