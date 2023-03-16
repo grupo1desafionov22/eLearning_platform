@@ -45,7 +45,6 @@ const Creation = () => {
         const requestOptions = {
           headers: { 'Content-Type': 'application/json' },
         };
-        // Remove course_id from course object
         const { course_id, ...newCourse } = course;
         axios.post('http://localhost:5000/courses/create', newCourse, requestOptions)
           .then(response => console.log(response))
@@ -59,19 +58,17 @@ const Creation = () => {
   return (
     <div>
       <label>Title:</label>
-      <input type="text" name="course_title" value={course.course_title} onChange={handleInputChange} /><br />
+      <input type="text" name="course_title" value={course.course_title} onChange={handleInputChange} />
       <label>Description:</label>
-      <input type="text" name="course_description" value={course.course_description} onChange={handleInputChange} /><br />
+      <input type="text" name="course_description" value={course.course_description} onChange={handleInputChange} />
       <label>Format:</label>
-      <input type="text" name="format" value={course.format} onChange={handleInputChange} /><br />
+      <input type="text" name="format" value={course.format} onChange={handleInputChange} />
       <label>Length:</label>
-      <input type="number" name="length" value={course.length} onChange={handleInputChange} /><br />
-      <label>Length Unit:</label>
-      <input type="text" name="length_unit" value={course.length_unit} onChange={handleInputChange} /><br />
+      <input type="number" name="length" value={course.length} onChange={handleInputChange} />
       <label>Creator:</label>
-      <input type="text" name="creator" value={course.creator} onChange={handleInputChange} /><br />
+      <input type="text" name="creator" value={course.creator} onChange={handleInputChange} />
       <label>PDF:</label>
-      <input type="file" name="course_url" onChange={handleFileChange} /><br />
+      <input type="file" name="course_url" onChange={handleFileChange} />
       <button onClick={handleUpload}>Create Course</button>
     </div>
   );
