@@ -1,50 +1,50 @@
-import React, {useEffect } from "react";
+import React, {useEffect, useState } from "react";
+import { onLogin } from  '../../../api/auth'
 
+import { useDispatch } from 'react-redux'
+import { authenticateUser } from '../../../redux/slices/authSlice'
 /* import {useHistory} from 'react-router';
  */
 const Login = () => {
-/*   const history = useHistory();
- */
-    function handleLogin(e) {
-      e.preventDefault()
+  const [values, setValues] = useState({
+    email: '',
+    password: '',
+  })
+  const [error, setError] = useState(false)
 
-      const form = e.target;
-      const user = {
-        email: form[0].value,
-        password: form[1].value
+  const onChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value })
+  }
 
-      }
-      fetchData(user)
-      /* .then(res => res.json())
-      .then(data => {
-        localStorage.setItem('token',data.token)
-      }) */
-      
-    }
+  const dispatch = useDispatch()
+  const onSubmit = async (e) => {
+    e.preventDefault()
 
-    console.log(document.cookie);
-    async function fetchData(user) {
-      const res = await fetch('http://localhost:5000/api/users/login', {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json'
-        },
-        body: JSON.stringify(user)
-      })
-      console.log(res);
-        }
-   /*  useEffect(()=> {
-      fetch()
-    }) */
+    try {
+      await onLogin(values)
+      dispatch(authenticateUser())
 
-
+      localStorage.setItem('isAuth', 'true')
+    } catch (error) {
+      console.log(error.message)
+      setError(error.message)
+/*       setError(error.response.data.errors[0].msg)
+ */    }
+  }
 
 
   return <section>
 
-    <form onSubmit={handleLogin}>
-    <input type='email' required placeholder="email"/>
-    <input type='password' required placeholder="password"/>
+    <form onSubmit={onSubmit}>
+    <input type='email'
+            className='form-control'
+            id='email'
+            name='email'
+            value={values.email} onChange={(e) => onChange(e)} required placeholder="email"/>
+    <input type='password' value={values.password}
+            className='form-control'
+            id='password'
+            name='password'onChange={(e) => onChange(e)} required placeholder="password"/>
     <input type="submit" value="Enviar" />
     </form>
 
