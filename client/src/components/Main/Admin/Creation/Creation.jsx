@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/storage";
+import axios from 'axios';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -43,19 +44,17 @@ const Creation = () => {
       .then((snapshot) => {
         console.log("PDF uploaded successfully");
         const requestOptions = {
-          method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(course)
         };
-        fetch('http://localhost:5000/courses/create', requestOptions)
-          .then(response => response.json())
-          .then(data => console.log(data))
+        axios.post('http://localhost:5000/courses/create', course, requestOptions)
+          .then(response => console.log(response))
           .catch(error => console.log(error));
       })
       .catch((error) => {
         console.error("Error uploading PDF: ", error);
       });
   };
+  
   
 
   return (
