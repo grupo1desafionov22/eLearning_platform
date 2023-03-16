@@ -17,7 +17,6 @@ console.log(firebaseConfig);
 
 const Creation = () => {
   const [course, setCourse] = useState({
-    course_id: "",
     course_title: "",
     course_description: "",
     course_url: "",
@@ -46,7 +45,9 @@ const Creation = () => {
         const requestOptions = {
           headers: { 'Content-Type': 'application/json' },
         };
-        axios.post('http://localhost:5000/courses/create', course, requestOptions)
+        // Remove course_id from course object
+        const { course_id, ...newCourse } = course;
+        axios.post('http://localhost:5000/courses/create', newCourse, requestOptions)
           .then(response => console.log(response))
           .catch(error => console.log(error));
       })
@@ -54,13 +55,9 @@ const Creation = () => {
         console.error("Error uploading PDF: ", error);
       });
   };
-  
-  
 
   return (
     <div>
-      <label>Course ID:</label>
-      <input type="text" name="course_id" value={course.course_id} onChange={handleInputChange} /><br />
       <label>Title:</label>
       <input type="text" name="course_title" value={course.course_title} onChange={handleInputChange} /><br />
       <label>Description:</label>
@@ -72,7 +69,7 @@ const Creation = () => {
       <label>Length Unit:</label>
       <input type="text" name="length_unit" value={course.length_unit} onChange={handleInputChange} /><br />
       <label>Creator:</label>
-            <input type="text" name="creator" value={course.creator} onChange={handleInputChange} /><br />
+      <input type="text" name="creator" value={course.creator} onChange={handleInputChange} /><br />
       <label>PDF:</label>
       <input type="file" name="course_url" onChange={handleFileChange} /><br />
       <button onClick={handleUpload}>Create Course</button>

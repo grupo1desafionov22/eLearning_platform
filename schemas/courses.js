@@ -1,11 +1,12 @@
 const { db } = require('../config/sqlConnection');
 const { DataTypes } = require('sequelize');
+const { v4: uuidv4 } = require('uuid');
 
 const Courses = db.define("courses", {
   course_id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: false
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    primaryKey: true
   },
   course_title: {
     type: DataTypes.STRING,
@@ -27,10 +28,6 @@ const Courses = db.define("courses", {
     type: DataTypes.BIGINT,
     defaultValue: false
   },
-  length_unit:{
-    type: DataTypes.STRING,
-    defaultValue: false
-  },
   creator: {
     type: DataTypes.STRING,
     allowNull: false
@@ -39,7 +36,12 @@ const Courses = db.define("courses", {
   db,
   modelName: 'Courses',
   tableName: 'courses',
-  timestamps: true
+  timestamps: true,
+  hooks: {
+    beforeCreate: (course, options) => {
+      course.course_id = uuidv4();
+    }
+  }
 });
 
 Courses.sync();
