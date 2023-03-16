@@ -1,15 +1,17 @@
 
 //importing modules
 const express = require('express')
-const userController = require('../controllers/userController')
-const { signup, login } = userController
-const userAuth = require('../middlewares/userAuth')
 
+const { signup, login, protected} = require('../controllers/userController')
+const validator = require('../middlewares/validation_middleware')
+const { userAuth } = require('../middlewares/auth_middleware')
 const router = express.Router()
 
 //signup endpoint
 //passing the middleware function to the signup
-router.post('/signup', userAuth.saveUser, signup)
+router.post('/signup', validator.saveUser, signup)
+
+
 
     /* 
     { 
@@ -28,5 +30,7 @@ router.post('/signup', userAuth.saveUser, signup)
 //login route
 //http://localhost:5000/api/users/login
 router.post('/login', login )
+
+router.get('/protected', userAuth, protected)
 
 module.exports = router
