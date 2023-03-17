@@ -39,7 +39,7 @@ const Courses = db.define("courses", {
   hooks: {
     beforeCreate: async (course, options) => {
       const count = await Courses.count();
-      course.id = count + 1;
+      course.course_id = count + 1;
     }
   }
 });

@@ -31,7 +31,13 @@ const Users =db.define('users', {
       db,
       modelName: 'Users',
       tableName: 'users',
-      timestamps: 'true'
+      timestamps: 'true',
+      hooks: {
+        beforeCreate: async (user, options) => {
+          const count = await Users.count();
+          user.user_id = count + 1;
+        }
+      }
   });
   
   
