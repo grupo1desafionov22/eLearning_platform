@@ -1,5 +1,4 @@
 import React from "react";
-import { TfiHeart} from "react-icons/tfi";
 
 const Admincardcourse = (props) => {
   
@@ -12,7 +11,6 @@ const Admincardcourse = (props) => {
         <p>{props.data.course_description}</p>
 
         <button >Entrar al curso</button>
-        <button ><TfiHeart /></button>
         <img src={props.data.course_url} alt={props.data.title} />
 
       
