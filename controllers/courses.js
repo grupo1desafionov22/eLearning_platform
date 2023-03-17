@@ -13,9 +13,9 @@ const getCourseById = async (req, res) => {
 };
 
 const createCourse = async (req, res) => {
-    const newCourse = req.body;
-    const created = await Courses.create(newCourse);
-    res.status(201).json(created);
+  const newCourse = req.body;
+  const created = await Courses.create(newCourse);
+  res.status(201).json(created);
 };
 
 const updateCourse = async (req, res) => {
