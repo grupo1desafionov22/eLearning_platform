@@ -31,6 +31,14 @@ const Courses = db.define("courses", {
     type: DataTypes.STRING,
     allowNull: false
   },
+  image_url: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  lessons: {
+    type: DataTypes.ARRAY(DataTypes.STRING),
+    allowNull: true
+  }
 }, {
   db,
   modelName: 'Courses',

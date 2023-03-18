@@ -2,7 +2,6 @@ import React from "react";
 import { Routes, Route } from 'react-router-dom';
 import Admin from './Admin';
 import Home from './Home';
-import Details from './Details';
 import Courses from "./Courses/Courses";
 import Admincourses from "./Admin/Admincourses/Admincourses";
 import Creation from './Admin/Creation';
@@ -15,7 +14,6 @@ const Main = () => {
     Main
     <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/details" element={<Details />} />
         <Route path="/courses/*" element={<Courses />} />
         <Route  path="/courses/:course_id" element={<DetailsCourse />}  />
         <Route path="/admin" element={<Admin />} />

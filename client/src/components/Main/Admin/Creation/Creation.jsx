@@ -23,17 +23,36 @@ const Creation = () => {
     format: "",
     length: "",
     length_unit: "",
-    creator: ""
+    creator: "",
+    image_url: "",
+    lessons: []
   });
+
+  const [numLessons, setNumLessons] = useState(1);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setCourse({...course, [name]: value});
+
+    if (name.startsWith("lesson_")) {
+      // Extract the lesson number from the input field name
+      const lessonNum = parseInt(name.split("_")[1]);
+      // Create a new copy of the lessons array with the new value at the correct index
+      const newLessons = [...course.lessons];
+      newLessons[lessonNum - 1] = value;
+      // Update the course state with the new lessons array
+      setCourse({ ...course, lessons: newLessons });
+    } else {
+      setCourse({ ...course, [name]: value });
+    }
+  };
+
+  const handleAddLesson = () => {
+    setNumLessons(numLessons + 1);
   };
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
-    setCourse({...course, course_url: selectedFile});
+    setCourse({ ...course, course_url: selectedFile });
   };
 
   const handleUpload = () => {
@@ -42,18 +61,37 @@ const Creation = () => {
     pdfRef.put(course.course_url)
       .then((snapshot) => {
         console.log("PDF uploaded successfully");
-        const requestOptions = {
-          headers: { 'Content-Type': 'application/json' },
-        };
-        const { course_id, ...newCourse } = course;
-        axios.post('http://localhost:5000/courses/create', newCourse, requestOptions)
-          .then(response => console.log(response))
+        // Get the URL of the uploaded PDF file from Firebase Storage
+        pdfRef.getDownloadURL()
+          .then(url => {
+            // Update the course object with the PDF URL
+            const updatedCourse = { ...course, course_url: url };
+            // Send the course data to the database
+            const requestOptions = {
+              headers: { 'Content-Type': 'application/json' },
+            };
+            const { course_id, ...newCourse } = updatedCourse;
+            axios.post('http://localhost:5000/courses/create', newCourse, requestOptions)
+              .then(response => console.log(response))
+              .catch(error => console.log(error));
+          })
           .catch(error => console.log(error));
       })
       .catch((error) => {
         console.error("Error uploading PDF: ", error);
       });
-  };
+  };  
+
+  // Generate an array of JSX elements for the lesson input fields
+  const lessonInputs = [];
+  for (let i = 1; i <= numLessons; i++) {
+    lessonInputs.push(
+      <div key={i}>
+        <label>Lesson {i}:</label>
+        <input type="text" name={`lesson_${i}`} value={course.lessons[i - 1] || ""} onChange={handleInputChange} />
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -67,6 +105,10 @@ const Creation = () => {
       <input type="number" name="length" value={course.length} onChange={handleInputChange} />
       <label>Creator:</label>
       <input type="text" name="creator" value={course.creator} onChange={handleInputChange} />
+      <label>Image URL:</label>
+      <input type="text" name="image_url" value={course.image_url} onChange={handleInputChange} />
+      {lessonInputs}
+      <button onClick={handleAddLesson}>Add Lesson</button>
       <label>PDF:</label>
       <input type="file" name="course_url" onChange={handleFileChange} />
       <button onClick={handleUpload}>Create Course</button>
