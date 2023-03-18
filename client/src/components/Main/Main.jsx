@@ -6,6 +6,7 @@ import Details from './Details';
 import Courses from "./Courses/Courses";
 import Admincourses from "./Admin/Admincourses/Admincourses";
 import Creation from './Admin/Creation';
+import DetailsCourse from "./DetailsCourse/DetailsCourse";
 
 
 const Main = () => {
@@ -14,7 +15,8 @@ const Main = () => {
     <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/details" element={<Details />} />
-        <Route path="/courses" element={<Courses />} />
+        <Route path="/courses/*" element={<Courses />} />
+        <Route  path="/courses/:course_id" element={<DetailsCourse />}  />
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/creation" element={<Creation />} />
         <Route path="/admin/courses" element={<Admincourses />} />
