@@ -6,7 +6,7 @@ import Details from './Details';
 import Courses from "./Courses/Courses";
 import Admincourses from "./Admin/Admincourses/Admincourses";
 import Creation from './Admin/Creation';
-
+import Edition from './Admin/Edition';
 
 const Main = () => {
   return <main className="mainFormat">
@@ -18,6 +18,7 @@ const Main = () => {
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/creation" element={<Creation />} />
         <Route path="/admin/courses" element={<Admincourses />} />
+        <Route path="/admin/edition/:course_id" element={<Edition />} />
       </Routes>
   </main>;
 };

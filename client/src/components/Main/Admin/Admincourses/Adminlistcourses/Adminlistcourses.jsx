@@ -5,7 +5,9 @@ const Adminlistcourses = (props) => {
   return (
     <section>
       <h1>Cursos</h1>
-      {props.data.map(course => <Admincardcourse data={course} key={course.course_id} />)}
+      {props.data.map((course) => (
+        <Admincardcourse data={course} key={course.course_id} handleDelete={props.handleDelete} />
+      ))}
     </section>
   );
 };
