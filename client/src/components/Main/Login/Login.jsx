@@ -1,15 +1,15 @@
-import React, {useEffect, useState } from "react";
+import React, { useState } from "react";
 import { onLogin } from  '../../../api/auth'
 
 import { useDispatch } from 'react-redux'
 import { authenticateUser } from '../../../redux/slices/authSlice'
-/* import {useHistory} from 'react-router';
- */
+
 const Login = () => {
   const [values, setValues] = useState({
     email: '',
     password: '',
   })
+  // eslint-disable-next-line
   const [error, setError] = useState(false)
 
   const onChange = (e) => {

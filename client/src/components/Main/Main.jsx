@@ -10,13 +10,13 @@ import { useSelector } from 'react-redux'
 const PrivateRoutes = () => {
   const { isAuth } = useSelector((state) => state.auth)
 
-  return <>{isAuth ? <Outlet /> : <Navigate to='/login' />}</>
+  return <>{isAuth ? <Outlet /> : <Navigate to='/admin' />}</>
 }
 
 const RestrictedRoutes = () => {
   const { isAuth } = useSelector((state) => state.auth)
 
-  return <>{!isAuth ? <Outlet /> : <Navigate to='/dashboard' />}</>
+  return <>{!isAuth ? <Outlet /> : <Navigate to='/login' />}</>
 }
 
 
@@ -27,13 +27,12 @@ const Main = () => {
         <Route path="/" element={<Home />} />
         <Route element={<PrivateRoutes />}>
         <Route path="/admin" element={<Admin />} />
-        
         <Route path="/details" element={<Details />} />
         </Route>
-        <Route element={<RestrictedRoutes />}>
+      {/*   <Route element={<RestrictedRoutes />}> */}
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
-        </Route>
+     {/*    </Route> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
   </main>;

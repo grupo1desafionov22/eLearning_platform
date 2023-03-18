@@ -6,11 +6,10 @@ const Register = () => {
   const [values, setValues] = useState({
     email: '',
     password: '',
-    role: '',
     username:'',
     HIV_relationship: '',
     identity: '',
-    birthdate: ''
+    age: 0
 
 
   })
@@ -37,14 +36,43 @@ const Register = () => {
   }
   return <section>
 
-  <form onSubmit={onSubmit}>
-  <input type='email' onChange={(e) => onChange(e)} required placeholder="email" />
-  <input type='password' onChange={(e) => onChange(e)} required placeholder="password"/>
-  <input type='text' onChange={(e) => onChange(e)} required placeholder="role"/>
-  <input type='text' onChange={(e) => onChange(e)} required placeholder="username"/>
-  <input type='text' onChange={(e) => onChange(e)} required placeholder="HIV_Relationship"/>
-  <input type='text' onChange={(e) => onChange(e)} required placeholder="identity"/>
-  <input type='date' onChange={(e) => onChange(e)} required placeholder="birthdate"/>
+  <form onSubmit={(e) => onSubmit(e)} >
+  <input type='email' onChange={(e) => onChange(e)} 
+            required 
+            placeholder="email"  
+            id='email'
+            name='email'
+            value={values.email}/>
+  <input type='password' onChange={(e) => onChange(e)} 
+            required 
+            placeholder="password"
+            value={values.password}
+            id='password'
+            name='password'/>
+  <input type='text' onChange={(e) => onChange(e)} 
+          required 
+          placeholder="username"
+          id='username'
+          name='username'
+          value={values.username}/>
+  <input type='text' onChange={(e) => onChange(e)} 
+          required 
+          placeholder="HIV_Relationship"
+          id='HIV_relationship'
+          name='HIV_relationship'
+          value={values.HIV_relationship}/>
+  <input type='text' onChange={(e) => onChange(e)} 
+          required 
+          placeholder="identity"
+          value={values.identity}
+          id='identity'
+          name='identity'/>
+  <input type='number' onChange={(e) => onChange(e)} 
+          required 
+          placeholder="age"
+          value={values.age}
+          id='age'
+          name='age'/>
   <input type="submit" value="Enviar" />
   </form>
 

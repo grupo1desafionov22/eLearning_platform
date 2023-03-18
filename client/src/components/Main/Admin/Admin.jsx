@@ -15,7 +15,9 @@ firebase.initializeApp(firebaseConfig);
 console.log(firebaseConfig);
 
 const Admin = () => {
+
   const [file, setFile] = useState(null);
+  
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
