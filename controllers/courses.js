@@ -7,10 +7,11 @@ const getCourses = async (req, res) => {
 };
 
 const getCourseById = async (req, res) => {
-    const {course_id } = req.body;
-    const course = await Courses.findAll({ where: { course_id } })
+    const { course_id } = req.params;
+    const course = await Courses.findOne({ where: { course_id } })
     res.status(200).json(course);
 };
+
 
 const createCourse = async (req, res) => {
     const newCourse = req.body;

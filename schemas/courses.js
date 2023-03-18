@@ -1,11 +1,10 @@
 const { db } = require('../config/sqlConnection');
 const { DataTypes } = require('sequelize');
-const { v4: uuidv4 } = require('uuid');
 
 const Courses = db.define("courses", {
   course_id: {
-    type: DataTypes.UUID,
-    defaultValue: DataTypes.UUIDV4,
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
     primaryKey: true
   },
   course_title: {
@@ -38,8 +37,9 @@ const Courses = db.define("courses", {
   tableName: 'courses',
   timestamps: true,
   hooks: {
-    beforeCreate: (course, options) => {
-      course.course_id = uuidv4();
+    beforeCreate: async (course, options) => {
+      const count = await Courses.count();
+      course.course_id = count + 1;
     }
   }
 });
