@@ -1,5 +1,6 @@
 import React from "react";
 import { TfiHeart} from "react-icons/tfi";
+import { Link } from "react-router-dom";
 
 const CardCourse = (props) => {
   
@@ -10,10 +11,8 @@ const CardCourse = (props) => {
        
         <h3>{props.data.course_title.toUpperCase()}</h3>
         <p>{props.data.course_description}</p>
-
-        <button >Entrar al curso</button>
         <button ><TfiHeart /></button>
-        <img src={props.data.course_url} alt={props.data.title} />
+        <Link to={'/courses/'+props.data.course_id}>Entrar al curso</Link>
 
       
     </>
@@ -21,3 +20,5 @@ const CardCourse = (props) => {
 };
 
 export default CardCourse;
+
+
