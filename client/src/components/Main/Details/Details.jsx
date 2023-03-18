@@ -22,6 +22,7 @@ const Details = () => {
     <div>
       {pdfs.map((url, index) => (
         <div key={index}>
+          {/* ESTILOS INLINE!!! */}
           <iframe src={url} title={`PDF Document ${index + 1}`} width="100%" height="500px"></iframe>
         </div>
       ))}
