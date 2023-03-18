@@ -20,7 +20,12 @@ const Nav = () => {
       console.log(error.response)
     }
   }
-  return <div>Nav</div>;
+  return <nav>
+
+<button onClick={() => logout()} className='btn btn-primary'>
+Logout
+        </button>
+  </nav>;
 };
 
 export default Nav;

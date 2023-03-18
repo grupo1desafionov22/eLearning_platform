@@ -40,13 +40,13 @@ const Login = () => {
             className='form-control'
             id='email'
             name='email'
-            value={values.email} onChange={(e) => onChange(e)} required placeholder="email"/>
+            value={values.email} onChange={(e) => onChange(e)} required placeholder="Email"/>
     <input type='password' value={values.password}
-            className='form-control'
             id='password'
-            name='password'onChange={(e) => onChange(e)} required placeholder="password"/>
+            name='password'onChange={(e) => onChange(e)} required placeholder="Contraseña"/>
     <input type="submit" value="Enviar" />
     </form>
+    
 
 
   </section>;

@@ -25,12 +25,14 @@ const Register = () => {
 
     try {
       const { data } = await onRegistration(values)
-
+console.log(data);
       setError('')
       setSuccess(data.message)//mensaje para el usuario
       setValues({ email: '', password: '' })
     } catch (error) {
-      setError(error.response.data.errors[0].msg)//mensaje de error para el usuario
+      console.log(error);
+      setError(error.message)
+      //mensaje de error para el usuario
       setSuccess('')
     }
   }
@@ -39,31 +41,30 @@ const Register = () => {
   <form onSubmit={(e) => onSubmit(e)} >
   <input type='email' onChange={(e) => onChange(e)} 
             required 
-            placeholder="email"  
+            placeholder="Email"  
             id='email'
             name='email'
             value={values.email}/>
   <input type='password' onChange={(e) => onChange(e)} 
             required 
-            placeholder="password"
+            placeholder="Contraseña"
             value={values.password}
             id='password'
             name='password'/>
   <input type='text' onChange={(e) => onChange(e)} 
           required 
-          placeholder="username"
+          placeholder="Nombre de usuario"
           id='username'
           name='username'
           value={values.username}/>
   <input type='text' onChange={(e) => onChange(e)} 
           required 
-          placeholder="HIV_Relationship"
+          placeholder="Relación son el VIH"
           id='HIV_relationship'
           name='HIV_relationship'
           value={values.HIV_relationship}/>
   <input type='text' onChange={(e) => onChange(e)} 
-          required 
-          placeholder="identity"
+          placeholder="Identidad de género"
           value={values.identity}
           id='identity'
           name='identity'/>
@@ -76,7 +77,8 @@ const Register = () => {
   <input type="submit" value="Enviar" />
   </form>
 
-
+  <div>{error}</div>
+  <div >{success}</div>
 </section>;
 };
 
