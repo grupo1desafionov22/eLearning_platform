@@ -10,25 +10,27 @@ const User = require('../schemas/users');
 //hashing users password before its saved to the database with bcrypt
 const signup = async (req, res) => {
 try {
-    const { username, email, password, HIV_relationship, identity, birthdate, role, user_id  } = req.body;
+    const { username, email, password, HIV_relationship, identity, age } = req.body;
+    const role = 'user'
     const data = {
     username,
     email,
     password: await bcrypt.hash(password, 10),
     HIV_relationship,
     identity, 
-    birthdate,
+    age,
     role,
-    user_id
+    
 
 };
-   //saving the user
-    const user = await User.create(data);
+  
 
    //if user details is captured
    //generate token with the user's id and the secretKey in the env file
    // set cookie with the token generated
-    if (user) {
+    if (data.username.length !== 0) {
+         //saving the user
+        const user = await User.create(data);
         let token = jwt.sign({ id: user.user_id }, process.env.SECRET_KEY, {
        expiresIn: 1 * 24 * 60 * 60 * 1000,
     });
@@ -37,14 +39,21 @@ try {
         console.log("user", JSON.stringify(user, null, 2));
         console.log(token);
      //send users details
-     res.json({ token });
+     return res.status(201).json({
+        success: true,
+        message: 'Registrado correctamente!',
+      })
        /*  return res.status(201).send(token); */
     } else {
-        return res.status(409).send("Details are not correct");
+        console.log(error);
+        return res.status(500).json({
+            error: error,
+        })
+        
     }
     } catch (error) {
     console.log(error);
-}
+} 
 };
 
 
@@ -96,7 +105,7 @@ const { email, password } = req.body;
 
 
 
-        const protected = async (req, res) => {
+        const protect = async (req, res) => {
             try {
             return res.status(200).json({
                 info: 'protected info',
@@ -123,5 +132,6 @@ const { email, password } = req.body;
     module.exports = {
     signup,
     login,
-    protected
+    protect,
+    logout
     };

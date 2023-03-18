@@ -17,7 +17,8 @@ const User = require('../schemas/users');
    });
    //if username exist in the database respond with a status of 409
    if (username) {
-     return res.json(409).send("username already taken");
+     //return res.json(409).send("username already taken");
+     throw new Error('Email o nombre de usuario ya registrados')
    }
 
    //checking if email already exist
@@ -29,7 +30,8 @@ const User = require('../schemas/users');
 
    //if email exist in the database respond with a status of 409
    if (emailcheck) {
-     return res.json(409).send("Authentication failed");
+     //return res.json(409).send("Authentication failed");
+     throw new Error('Email o nombre de usuario ya registrados')
    }
 
    next();

@@ -36,8 +36,8 @@ const Users =db.define('users', {
       type: DataTypes.STRING,
       allowNull: true
     },
-    birthdate: {
-      type: DataTypes.DATEONLY,
+    age: {
+      type: DataTypes.INTEGER,
       allowNull: false
     },
 
