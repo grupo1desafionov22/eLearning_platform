@@ -38,8 +38,10 @@ const Courses = db.define("courses", {
   timestamps: true,
   hooks: {
     beforeCreate: async (course, options) => {
-      const count = await Courses.count();
-      course.course_id = count + 1;
+      const lastCourse = await Courses.findOne({
+        order: [ [ 'course_id', 'DESC' ]]
+      });
+      course.course_id = lastCourse ? lastCourse.course_id + 1 : 1;
     }
   }
 });
