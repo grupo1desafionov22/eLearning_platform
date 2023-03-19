@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import Head from './components/Head';
 import AdminHead from './components/AdminHead';
 import Head2 from './components/Main/Home/Head2';
