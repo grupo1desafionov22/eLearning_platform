@@ -52,19 +52,24 @@ const Creation = () => {
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
-    setCourse({ ...course, course_url: selectedFile });
+    // Check if the selected file is a PDF or a video
+    if (selectedFile.type === 'application/pdf' || selectedFile.type === 'video/mp4') {
+      setCourse({ ...course, course_url: selectedFile });
+    } else {
+      alert('Please upload a PDF or a video file.');
+    }
   };
 
   const handleUpload = () => {
     const storageRef = firebase.storage().ref();
-    const pdfRef = storageRef.child(`pdfs/${course.course_url.name}`);
-    pdfRef.put(course.course_url)
+    const fileRef = storageRef.child(`files/${course.course_url.name}`);
+    fileRef.put(course.course_url)
       .then((snapshot) => {
-        console.log("PDF uploaded successfully");
-        // Get the URL of the uploaded PDF file from Firebase Storage
-        pdfRef.getDownloadURL()
+        console.log("File uploaded successfully");
+        // Get the URL of the uploaded file from Firebase Storage
+        fileRef.getDownloadURL()
           .then(url => {
-            // Update the course object with the PDF URL
+            // Update the course object with the file URL
             const updatedCourse = { ...course, course_url: url };
             // Send the course data to the database
             const requestOptions = {
@@ -78,9 +83,9 @@ const Creation = () => {
           .catch(error => console.log(error));
       })
       .catch((error) => {
-        console.error("Error uploading PDF: ", error);
+        console.error("Error uploading file: ", error);
       });
-  };  
+  };
 
   // Generate an array of JSX elements for the lesson input fields
   const lessonInputs = [];
