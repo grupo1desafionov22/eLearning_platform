@@ -22,7 +22,6 @@ const Creation = () => {
     course_url: "",
     format: "",
     length: "",
-    length_unit: "",
     creator: "",
     image_url: "",
     lessons: []
@@ -56,7 +55,7 @@ const Creation = () => {
     if (selectedFile.type === 'application/pdf' || selectedFile.type === 'video/mp4') {
       setCourse({ ...course, course_url: selectedFile });
     } else {
-      alert('Please upload a PDF or a video file.');
+      alert('Por favor, añade un PDF o un video');
     }
   };
 
@@ -99,24 +98,24 @@ const Creation = () => {
   }
 
   return (
-    <div>
-      <label>Title:</label>
+    <div className="creationFormat">
+      <label>Título:</label>
       <input type="text" name="course_title" value={course.course_title} onChange={handleInputChange} />
-      <label>Description:</label>
+      <label>Descripción:</label>
       <input type="text" name="course_description" value={course.course_description} onChange={handleInputChange} />
-      <label>Format:</label>
+      <label>Formato:</label>
       <input type="text" name="format" value={course.format} onChange={handleInputChange} />
-      <label>Length:</label>
+      <label>Duración:</label>
       <input type="number" name="length" value={course.length} onChange={handleInputChange} />
-      <label>Creator:</label>
+      <label>Creador:</label>
       <input type="text" name="creator" value={course.creator} onChange={handleInputChange} />
       <label>Image URL:</label>
       <input type="text" name="image_url" value={course.image_url} onChange={handleInputChange} />
       {lessonInputs}
       <button onClick={handleAddLesson}>Add Lesson</button>
-      <label>PDF:</label>
+      <label>Contenido (PDF/video):</label>
       <input type="file" name="course_url" onChange={handleFileChange} />
-      <button onClick={handleUpload}>Create Course</button>
+      <button onClick={handleUpload}>Crear curso</button>
     </div>
   );
 };
