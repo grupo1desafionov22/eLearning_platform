@@ -18,7 +18,7 @@ const googleRoutes = require ('./routes/googleRoutes');
 require('./middlewares/passport_middleware')
 
 // Routes modules:
-// const coursesRouter = require('./routes/coursesRoutes');
+const coursesRouter = require('./routes/coursesRoutes');
 const usersRouter = require('./routes/usersRoutes');
 
 const app = express();
@@ -47,9 +47,7 @@ app.use(passport.initialize())
     console.log("db has been re sync")
 }) */
 // Routes:
-// app.use('/', coursesRouter);
-
-
+app.use('/courses', coursesRouter);
 app.use('/users', usersRouter)
 
 app.use('/api/users', userRoutes)

@@ -2,11 +2,17 @@ import React, {useState,useEffect} from "react";
 import { Routes, Route, Navigate, Outlet  } from 'react-router-dom';
 import Admin from './Admin';
 import Home from './Home';
+
 import Details from './Details';
 import Register from './Register/Register';
 import Login from './Login/Login';
 import NotFound from './NotFound/NotFound';
 import { useSelector } from 'react-redux';
+import Courses from "./Courses/Courses";
+import Admincourses from "./Admin/Admincourses/Admincourses";
+import Creation from './Admin/Creation';
+import Edition from './Admin/Edition';
+import DetailsCourse from "./DetailsCourse/DetailsCourse";
 
 const PrivateRoutes = () => {
   const { isAuth } = useSelector((state) => state.auth)
@@ -31,16 +37,15 @@ const Main = () => {
       setUser(JSON.parse(theUser));
     }
   }, []);
-  return <main>
-    Main
-    <Routes>
+  return <main className="mainFormat">
+  
       {/*   <Route path="/" element={<Home />} />
         <Route element={<PrivateRoutes />}>
         <Route path="/home" element={<Admin />} />
         <Route path="/details" element={<Details />} />
         </Route>
     */}
-      
+          <Routes>
         <Route
           path="/"
           element={user?.email || isAuth ? <Navigate to="/home" /> : <Admin />}
@@ -58,6 +63,21 @@ const Main = () => {
           element={user?.email || isAuth  ? <Home user={user} /> : <Navigate to="/" />}
         />
           <Route path="*" element={<NotFound />} />
+
+
+
+
+
+
+
+        <Route path="/" element={<Home />} />
+        <Route path="/courses/*" element={<Courses />} />
+        <Route  path="/courses/:course_id" element={<DetailsCourse />}  />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/creation" element={<Creation />} />
+        <Route path="/admin/courses" element={<Admincourses />} />
+        <Route path="/admin/edition/:course_id" element={<Edition />} />
+
       </Routes>
   </main>;
 };

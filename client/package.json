@@ -20,6 +20,9 @@
     "react-scripts": "5.0.1",
     "reactfire": "^4.2.2",
     "uuid": "^9.0.0",
+    "react-icons": "^4.8.0",
+
+    "sass": "^1.59.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
