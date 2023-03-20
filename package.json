@@ -14,10 +14,18 @@
   "author": "Ana, Gabriela & César",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "react-router-dom": "^6.9.0"
+    "mongoose": "^7.0.1",
+    "pg": "^8.10.0",
+    "pg-hstore": "^2.3.4",
+    "react-router-dom": "^6.9.0",
+    "sass": "^1.59.3",
+    "sequelize": "^6.29.3"
   },
   "devDependencies": {
+    "concurrently": "^7.6.0",
     "create-react-component-folder": "^0.3.7",
     "nodemon": "^2.0.21"
   }
