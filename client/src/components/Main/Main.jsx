@@ -38,6 +38,7 @@ const Main = () => {
       setUser(JSON.parse(theUser));
     }
   }, []);
+
   return <main className="mainFormat">
 
     <Routes>
@@ -51,7 +52,7 @@ const Main = () => {
     */}
         <Route
           path="/"
-          element={user?.email || isAuth ? <Navigate to="/courses" /> : <Home />}
+          element={user?.email || isAuth ? <Navigate to="/courses" /> : <Register />}
         />
         <Route
           path="/register"
