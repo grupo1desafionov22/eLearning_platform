@@ -2,8 +2,6 @@ import React, {useState,useEffect} from "react";
 import { Routes, Route, Navigate, Outlet  } from 'react-router-dom';
 import Admin from './Admin';
 import Home from './Home';
-
-import Details from './Details';
 import Register from './Register/Register';
 import Login from './Login/Login';
 import NotFound from './NotFound/NotFound';
@@ -63,10 +61,6 @@ const Main = () => {
           element={user?.email || isAuth  ? <Home user={user} /> : <Navigate to="/" />}
         />
           <Route path="*" element={<NotFound />} />
-
-
-
-
 
 
 
