@@ -1,6 +1,7 @@
-import React from "react";
-import { useState } from 'react'
-import { onRegistration } from '../../../api/auth'
+import React, { useState, useEffect } from "react";
+import { onRegistration } from '../../../api/auth';
+import { Link } from "react-router-dom";
+import useFetch from "../../../hooks/useFetch";
 
 const Register = () => {
   const [values, setValues] = useState({
@@ -25,7 +26,6 @@ const Register = () => {
 
     try {
       const { data } = await onRegistration(values)
-console.log(data);
       setError('')
       setSuccess(data.message)//mensaje para el usuario
       setValues({ email: '', password: '' })
@@ -36,6 +36,35 @@ console.log(data);
       setSuccess('')
     }
   }
+
+  const  handleGoogle = useFetch("http://localhost:5000/google/signup");
+
+
+  useEffect(() => {
+    /* global google */
+    if (window.google) {
+      google.accounts.id.initialize({
+        client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+        callback: handleGoogle,
+      });
+
+      google.accounts.id.renderButton(document.getElementById("signUpDiv"), {
+        // type: "standard",
+        theme: "filled_black",
+        // size: "small",
+        text: "continue_with",
+        shape: "pill",
+      });
+
+      // google.accounts.id.prompt()
+    }
+  }, [handleGoogle]);
+
+
+
+
+
+
   return <section>
 
   <form onSubmit={(e) => onSubmit(e)} >
@@ -79,7 +108,13 @@ console.log(data);
 
   <div>{error}</div>
   <div >{success}</div>
-</section>;
+
+
+
+
+  <div id="signUpDiv" data-text="signup_with"></div>
+
+</section>
 };
 
 export default Register;

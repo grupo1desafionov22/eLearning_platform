@@ -15,7 +15,9 @@ const Nav = () => {
       await onLogout()
 
       dispatch(unauthenticateUser())
-      localStorage.removeItem('isAuth')
+      localStorage.removeItem('isAuth');
+      localStorage.removeItem("user");
+      window.location.reload();
     } catch (error) {
       console.log(error.response)
     }

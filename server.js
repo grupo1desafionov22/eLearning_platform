@@ -6,8 +6,13 @@ require('dotenv').config();
 const path = require('path');
 const cookieParser = require('cookie-parser')
 const { db } = require('./config/sqlConnection');
-const userRoutes = require ('./routes/userRoutes')
+
 const passport = require('passport')
+const { OAuth2Client } = require("google-auth-library");
+const jwt = require("jsonwebtoken");
+const userRoutes = require ('./routes/userRoutes');
+const googleRoutes = require ('./routes/googleRoutes');
+
 
 //passport middleware
 require('./middlewares/passport_middleware')
@@ -27,7 +32,14 @@ const corsOptions ={
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
-app.use(cors(corsOptions));
+app.use(
+    cors({
+      origin: ["http://localhost:3000"],
+      methods: "GET,POST,PUT,DELETE,OPTIONS",
+      credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+    })
+  );
 app.use(passport.initialize())
 
 //synchronizing the database and forcing it to false so we dont lose data
@@ -36,9 +48,13 @@ app.use(passport.initialize())
 }) */
 // Routes:
 // app.use('/', coursesRouter);
+
+
 app.use('/users', usersRouter)
 
 app.use('/api/users', userRoutes)
+
+app.use('/google', googleRoutes)
 
 
 

@@ -20,10 +20,8 @@ try {
     identity, 
     age,
     role,
-    
+    };
 
-};
-  
 
    //if user details is captured
    //generate token with the user's id and the secretKey in the env file
