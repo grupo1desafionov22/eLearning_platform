@@ -7,15 +7,17 @@ import Admincourses from "./Admin/Admincourses/Admincourses";
 import Creation from './Admin/Creation';
 import Edition from './Admin/Edition';
 import DetailsCourse from "./DetailsCourse/DetailsCourse";
+import Comunidad from "./Comunidad/Comunidad";
 
 
 const Main = () => {
   return <main className="mainFormat">
-    Main
+
     <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/courses/*" element={<Courses />} />
         <Route  path="/courses/:course_id" element={<DetailsCourse />}  />
+        <Route  path="/comunidad" element={<Comunidad/>}  />
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/creation" element={<Creation />} />
         <Route path="/admin/courses" element={<Admincourses />} />
