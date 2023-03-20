@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import CardCourse from "./CardCourse/CardCourse";
+import './ListCourses.css'
 
 const ListCourses = (props) => {
   const [search, setSearch] = useState("");
@@ -9,7 +10,7 @@ const ListCourses = (props) => {
   };
   
   return (
-    <section>
+    <section className="list">
       <input type="search" name="search" onChange={onChange} placeholder="Search" />
       <h1>Cursos</h1>
       {search
