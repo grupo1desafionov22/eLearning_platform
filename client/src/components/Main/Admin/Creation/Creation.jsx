@@ -62,24 +62,46 @@ const Creation = () => {
   const handleUpload = () => {
     const storageRef = firebase.storage().ref();
     const fileRef = storageRef.child(`files/${course.course_url.name}`);
-    fileRef.put(course.course_url)
+    fileRef
+      .put(course.course_url)
       .then((snapshot) => {
         console.log("File uploaded successfully");
         // Get the URL of the uploaded file from Firebase Storage
-        fileRef.getDownloadURL()
-          .then(url => {
+        fileRef
+          .getDownloadURL()
+          .then((url) => {
             // Update the course object with the file URL
             const updatedCourse = { ...course, course_url: url };
             // Send the course data to the database
             const requestOptions = {
-              headers: { 'Content-Type': 'application/json' },
+              headers: { "Content-Type": "application/json" },
             };
             const { course_id, ...newCourse } = updatedCourse;
-            axios.post('http://localhost:5000/courses/create', newCourse, requestOptions)
-              .then(response => console.log(response))
-              .catch(error => console.log(error));
+            axios
+              .post(
+                "http://localhost:5000/courses/create",
+                newCourse,
+                requestOptions
+              )
+              .then((response) => {
+                console.log(response);
+                alert("Curso creado con éxito"); // show success message
+                setCourse({
+                  // clear input fields
+                  course_title: "",
+                  course_description: "",
+                  course_url: "",
+                  format: "",
+                  length: "",
+                  creator: "",
+                  image_url: "",
+                  lessons: [],
+                });
+                setNumLessons(1);
+              })
+              .catch((error) => console.log(error));
           })
-          .catch(error => console.log(error));
+          .catch((error) => console.log(error));
       })
       .catch((error) => {
         console.error("Error uploading file: ", error);
@@ -106,7 +128,7 @@ const Creation = () => {
       <label>Formato:</label>
       <input type="text" name="format" value={course.format} onChange={handleInputChange} />
       <label>Duración:</label>
-      <input type="number" name="length" value={course.length} onChange={handleInputChange} />
+      <input type="text" name="length" value={course.length} onChange={handleInputChange} />
       <label>Creador:</label>
       <input type="text" name="creator" value={course.creator} onChange={handleInputChange} />
       <label>Image URL:</label>
