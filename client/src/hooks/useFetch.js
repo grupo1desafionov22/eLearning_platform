@@ -24,7 +24,7 @@ import { useState } from "react";
             if (data?.user) {
 
                 localStorage.setItem("user", JSON.stringify(data?.user));
-                // window.location.reload();
+                window.location.reload();
             }
     
             throw new Error(data?.message || data);

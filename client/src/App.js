@@ -7,6 +7,7 @@ import Head2 from './components/Main/Home/Head2';
 import Main from './components/Main';
 import Footer from './components/Footer';
 function App() {
+  // eslint-disable-next-line 
   const [user, setUser] = useState({});
   useEffect(() => {
     const theUser = localStorage.getItem("user");

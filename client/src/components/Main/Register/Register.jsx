@@ -67,42 +67,61 @@ const Register = () => {
 
   return <section>
 
-  <form onSubmit={(e) => onSubmit(e)} >
-  <input type='email' onChange={(e) => onChange(e)} 
-            required 
-            placeholder="Email"  
-            id='email'
-            name='email'
-            value={values.email}/>
-  <input type='password' onChange={(e) => onChange(e)} 
-            required 
-            placeholder="Contraseña"
-            value={values.password}
-            id='password'
-            name='password'/>
+  <form className="register_form" onSubmit={(e) => onSubmit(e)} >
+    <span className="input">
+  <label htmlFor="username">Nombre de usuario</label>
   <input type='text' onChange={(e) => onChange(e)} 
           required 
           placeholder="Nombre de usuario"
           id='username'
           name='username'
           value={values.username}/>
-  <input type='text' onChange={(e) => onChange(e)} 
-          required 
-          placeholder="Relación son el VIH"
-          id='HIV_relationship'
-          name='HIV_relationship'
-          value={values.HIV_relationship}/>
-  <input type='text' onChange={(e) => onChange(e)} 
-          placeholder="Identidad de género"
-          value={values.identity}
-          id='identity'
-          name='identity'/>
-  <input type='number' onChange={(e) => onChange(e)} 
+    </span>
+    <span className="input">
+<label htmlFor="age">Edad</label>
+<input type='number' onChange={(e) => onChange(e)} 
           required 
           placeholder="age"
           value={values.age}
           id='age'
           name='age'/>
+    </span>
+    <span className="input">
+<label htmlFor="identity">Género</label>
+<input type='text' onChange={(e) => onChange(e)} 
+          placeholder="Identidad de género"
+          value={values.identity}
+          id='identity'
+          name='identity'/>
+    </span>
+    <span className="input">
+
+  <label htmlFor="email">Mail</label>
+  <input type='email' onChange={(e) => onChange(e)} 
+            required 
+            placeholder="Email"  
+            id='email'
+            name='email'
+            value={values.email}/>
+    </span>
+    <span className="input">
+  <label htmlFor="password">Contraseña</label>
+  <input type='password' onChange={(e) => onChange(e)} 
+            required 
+            placeholder="Contraseña"
+            value={values.password}
+            id='password'
+            name='password'/>
+    </span>
+    <span className="input">
+  <label htmlFor="HIV_relationship">Relación con el VIH</label>
+  <input type='text' onChange={(e) => onChange(e)} 
+          required 
+          placeholder="Relación Con el VIH"
+          id='HIV_relationship'
+          name='HIV_relationship'
+          value={values.HIV_relationship}/>
+    </span>
   <input type="submit" value="Enviar" />
   </form>
 
@@ -112,7 +131,7 @@ const Register = () => {
 
 
 
-  <div id="signUpDiv" data-text="signup_with"></div>
+  <div className="input" id="signUpDiv" data-text="signup_with"></div>
 
 </section>
 };
