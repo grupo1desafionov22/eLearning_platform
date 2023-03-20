@@ -11,7 +11,6 @@ import DetailsCourse from "./DetailsCourse/DetailsCourse";
 
 const Main = () => {
   return <main className="mainFormat">
-    Main
     <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/courses/*" element={<Courses />} />
