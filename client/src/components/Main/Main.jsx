@@ -47,7 +47,6 @@ const Main = () => {
         <Route path="/details" element={<Details />} />
         </Route>
     */}
-          <Routes>
         <Route
           path="/"
           element={user?.email || isAuth ? <Navigate to="/home" /> : <Admin />}
