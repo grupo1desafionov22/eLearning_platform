@@ -14,7 +14,9 @@ import DetailsCourse from "./DetailsCourse/DetailsCourse";
 import Comunidad from "./Comunidad/Comunidad";
 
 const PrivateRoutes = () => {
+
   const { isAuth } = useSelector((state) => state.auth)
+
 
   return <>{isAuth ? <Outlet /> : <Navigate to='/home' />}</>
 }
@@ -49,28 +51,38 @@ const Main = () => {
     */}
         <Route
           path="/"
-          element={user?.email || isAuth ? <Navigate to="/home" /> : <Admin />}
+          element={user?.email || isAuth ? <Navigate to="/courses" /> : <Home />}
         />
         <Route
-          path="/signup"
-          element={user?.email || isAuth  ? <Navigate to="/home" /> : <Register/>}
+          path="/register"
+          element={user?.email || isAuth  ? <Navigate to="/courses" /> : <Register/>}
         />
         <Route
           path="/login"
-          element={user?.email || isAuth  ? <Navigate to="/home" /> : <Login />}
+          element={user?.email || isAuth  ? <Navigate to="/courses" /> : <Login />}
         />
         <Route
           path="/home"
           element={user?.email || isAuth  ? <Home user={user} /> : <Navigate to="/" />}
         />
-          <Route path="*" element={<NotFound />} />
+
+        <Route
+          path="/courses/:course_id"
+          element={user?.email || isAuth ? <DetailsCourse  user={user} /> : <Navigate to="/" />}
+        />
+
+        <Route path="*" element={<NotFound />} />
 
 
 
-        <Route path="/" element={<Home />} />
+      {/*   <Route path="/" element={<Home />} /> */}
         <Route path="/courses/*" element={<Courses />} />
+
+       {/*  <Route element={<PrivateRoutes />}>
         <Route  path="/courses/:course_id" element={<DetailsCourse />}  />
         <Route  path="/comunidad" element={<Comunidad/>}  />
+        </Route> */}
+
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/creation" element={<Creation />} />
         <Route path="/admin/courses" element={<Admincourses />} />

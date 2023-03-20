@@ -1,15 +1,16 @@
 
 import React from "react";
-import { useEffect, useState } from 'react'
+import {  useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { Link } from "react-router-dom";
 import {  onLogout } from '../../../api/auth'
 import { unauthenticateUser } from '../../../redux/slices/authSlice'
-
+import Login from '../../Main/Login/Login'
 const Nav = () => {
 
   const dispatch = useDispatch()
-  const [loading, setLoading] = useState(true)
-  const [protectedData, setProtectedData] = useState(null)
+/*   const [loading, setLoading] = useState(true)
+  const [protectedData, setProtectedData] = useState(null) */
 
   const [search, setSearch] = useState("");
   const onChange = (e) => {
@@ -37,13 +38,12 @@ const Nav = () => {
   <input type="search" name="search" onChange={onChange} placeholder="Search" />
   </div>
   <div>
-        <a href={"ruta-de-inicio-de-sesion"}>Login</a>
+        <Link to="/login">Acceder</Link>
+        <Link to="/register">Sign up</Link>
   </div>
 
 
-<button onClick={() => logout()} className='btn btn-primary'>
-Logout
-        </button>
+<button onClick={() => logout()} className='btn btn-primary'>Logout</button>
   </nav>;
 
 
