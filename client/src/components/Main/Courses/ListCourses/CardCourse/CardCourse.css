@@ -1,0 +1,21 @@
+.button-Input{
+    border-radius: 2em;
+    border: none;
+    padding: 10px;
+}
+
+
+.favorites{
+    border: none;
+    background-color: transparent;
+    padding: 10px;
+}
+
+.list-card{
+    display: flex;
+    flex-flow: wrap row;
+}
+
+.img-card{
+    border-radius: 2em;
+}
