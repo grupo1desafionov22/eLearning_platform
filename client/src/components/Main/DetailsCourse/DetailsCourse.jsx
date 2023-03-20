@@ -76,11 +76,11 @@ const DetailsCourse = () => {
         </ol>
         {course.course_url && (
           <div>
-            <button onClick={handlePdfButtonClick}>View PDF</button>
+            <button onClick={handlePdfButtonClick}>View content</button>
             {showPdf && (
               <div>
                 <button onClick={handleFullscreenButtonClick}>
-                  {isFullScreen ? "Exit Fullscreen" : "Fullscreen"}
+                  {isFullScreen ? "Exit Fullscreen" : "⛶"}
                 </button>
                 <iframe
                   src={course.course_url}
