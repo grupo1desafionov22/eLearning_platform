@@ -72,13 +72,9 @@ const Main = () => {
 
         <Route path="*" element={<NotFound />} />
 
-<<<<<<< HEAD
-        <Route path="/" element={<Home />} />
-=======
 
 
       {/*   <Route path="/" element={<Home />} /> */}
->>>>>>> 5bc06757206d35400e4cd76fe8ff258f681f44e9
         <Route path="/courses/*" element={<Courses />} />
         <Route  path="/comunidad" element={<Comunidad/>}  />
 
