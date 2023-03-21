@@ -38,10 +38,11 @@ const Nav = () => {
       <p className="logo">XOX< SiDiaspora color="#FFA500" size="40px" /></p>
     </div>
     <div>
-      <Link to="/login" className="buttonCard"><p className="filter">Acceder</p></Link>
-      </div>
-      <div>
-      <Link to="/register" className="buttonCard"><p className="filter">Sign Up</p></Link>
+      <input type="search" name="search" onChange={onChange} placeholder="Search" />
+    </div>
+    <div>
+      <Link to="/login" className="filter">Acceder</Link>
+      <Link to="/admin" className="filter">Admin</Link>
     </div>
 
 

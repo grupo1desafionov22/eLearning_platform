@@ -77,7 +77,7 @@ const { email, password } = req.body;
       //generate token with the user's id and the secretKey in the env file
 
         if (isSame) {
-        let token = jwt.sign({ email: user.email }, process.env.SECRET_KEY, {
+        let token = jwt.sign({ email: user.email, rol: user.rol }, process.env.SECRET_KEY, {
             expiresIn: 1 * 24 * 60 * 60 * 1000,
         });
 
@@ -85,6 +85,7 @@ const { email, password } = req.body;
         //go ahead and generate a cookie for the user
         return res.status(200).cookie("token", token, { httpOnly: true }).json({
             success: true,
+            role: user.role,
             message: 'Logged in succefully'
         })
 /*         console.log("user", JSON.stringify(user, null, 2));
