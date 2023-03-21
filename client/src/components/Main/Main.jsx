@@ -42,8 +42,6 @@ const Main = () => {
   return <main className="mainFormat">
 
     <Routes>
-
-  
       {/*   <Route path="/" element={<Home />} />
         <Route element={<PrivateRoutes />}>
         <Route path="/home" element={<Admin />} />
