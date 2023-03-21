@@ -8,7 +8,7 @@ const Register = () => {
     email: '',
     password: '',
     username:'',
-    HIV_relationship: '',
+    hiv_relationship: '',
     identity: '',
     age: 0
 
@@ -114,13 +114,13 @@ const Register = () => {
             name='password'/>
     </span>
     <span className="input">
-  <label htmlFor="HIV_relationship">Relación con el VIH</label>
+  <label htmlFor="hiv_relationship">Relación con el VIH</label>
   <input type='text' onChange={(e) => onChange(e)} 
           required 
           placeholder="Relación Con el VIH"
-          id='HIV_relationship'
-          name='HIV_relationship'
-          value={values.HIV_relationship}/>
+          id='hiv_relationship'
+          name='hiv_relationship'
+          value={values.hiv_relationship}/>
     </span>
   <input type="submit" value="Enviar" />
   </form>

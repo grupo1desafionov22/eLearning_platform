@@ -24,7 +24,7 @@
             username: profile?.given_name,
             email: profile?.email,
             password: 'google',
-            HIV_relationship: 'google',
+            hiv_relationship: 'google',
             identity: 'google', 
             age: 0,
             role,

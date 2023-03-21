@@ -21,7 +21,7 @@ router.post('/signup', validator.saveUser, signup)
         "role": "user",
         "logged_in": false,
         "username": "ana",
-        "HIV_relationship": "1",
+        "hiv_relationship": "1",
         "identity": "m",
         "birthdate": "1994-06-21"
         
