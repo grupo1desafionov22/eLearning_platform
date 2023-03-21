@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { onLogout } from '../../../api/auth'
 import { unauthenticateUser } from '../../../redux/slices/authSlice'
 import Login from '../../Main/Login/Login'
+import './Nav.css'
+import {SiDiaspora } from "react-icons/si";
 
 const Nav = () => {
 
@@ -32,8 +34,8 @@ const Nav = () => {
   }
 
   return <nav className={"nav-bar"}>
-    <div>
-      <img src="logoyellow.png" alt={"Logo"} />
+    <div className="allLogo">
+      <p className="logo">XOX< SiDiaspora color="#FFA500" size="40px" /></p>
     </div>
     <div>
       <Link to="/login" className="buttonCard"><p className="filter">Acceder</p></Link>
