@@ -13,7 +13,10 @@ import Edition from './Admin/Edition';
 import DetailsCourse from "./DetailsCourse/DetailsCourse";
 import Comunidad from "./Comunidad/Comunidad";
 
+
+
 const PrivateRoutes = () => {
+
 
   const { isAuth } = useSelector((state) => state.auth)
 
@@ -29,6 +32,9 @@ const RestrictedRoutes = () => {
 
 
 const Main = () => {
+  //const isAdmin =  
+  //console.log(isAdmin);
+  const isAdminUser = useSelector((state) => state.user.role === 'admin') 
   const { isAuth } = useSelector((state) => state.auth)
   const [user, setUser] = useState({});
   useEffect(() => {
@@ -42,14 +48,7 @@ const Main = () => {
   return <main className="mainFormat">
 
     <Routes>
-
   
-      {/*   <Route path="/" element={<Home />} />
-        <Route element={<PrivateRoutes />}>
-        <Route path="/home" element={<Admin />} />
-        <Route path="/details" element={<Details />} />
-        </Route>
-    */}
         <Route
           path="/"
           element={user?.email || isAuth ? <Navigate to="/courses" /> : <Login />}
@@ -75,20 +74,37 @@ const Main = () => {
         <Route path="*" element={<NotFound />} />
 
 
-
-      {/*   <Route path="/" element={<Home />} /> */}
         <Route path="/courses/*" element={<Courses />} />
         <Route  path="/comunidad" element={<Comunidad/>}  />
 
-        {/*  <Route element={<PrivateRoutes />}>
-        <Route  path="/courses/:course_id" element={<DetailsCourse />}  />
-        
-        </Route> */}
+        <Route
+          path="/admin"
+          element={isAdminUser  ? <Admin  user={user} /> : <Navigate to="/" />}
+        />
 
-        <Route path="/admin" element={<Admin />} />
+        <Route
+          path="/admin"
+          element={isAdminUser  ? <Admin  user={user} /> : <Navigate to="/" />}
+        />
+
+        <Route
+          path="/admin/creation"
+          element={isAdminUser  ? <Creation   user={user} /> : <Navigate to="/" />}
+        />
+      <Route
+          path="/admin/courses"
+          element={isAdminUser  ? <Admincourses  user={user} /> : <Navigate to="/" />}
+        />
+
+      <Route
+          path="/admin/edition/:course_id"
+          element={isAdminUser  ? <Edition  user={user} /> : <Navigate to="/" />}
+        />
+
+     {/*    <Route path="/admin" element={<Admin />} />
         <Route path="/admin/creation" element={<Creation />} />
         <Route path="/admin/courses" element={<Admincourses />} />
-        <Route path="/admin/edition/:course_id" element={<Edition />} />
+        <Route path="/admin/edition/:course_id" element={<Edition />} /> */}
 
       </Routes>
   </main>;

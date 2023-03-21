@@ -15,7 +15,7 @@ const Courses = () => {
   }, [setCourses]);
 
   return (
-    <section>
+    <section >
       <ListCourses
         data={courses}
       />

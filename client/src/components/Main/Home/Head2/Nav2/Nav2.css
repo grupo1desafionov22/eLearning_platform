@@ -1,0 +1,17 @@
+.filter{
+    font-size: 20px;
+    color: #576C79;
+    padding: 15px;
+    margin: 10px;
+   
+}
+
+.filter:hover{
+    font-size: 17px;
+    background-color: #FDEAD8;
+    padding: 5px;
+}
+
+.buttonCard{
+    text-decoration: none;
+}

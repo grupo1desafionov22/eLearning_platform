@@ -85,6 +85,7 @@ const { email, password } = req.body;
         //go ahead and generate a cookie for the user
         return res.status(200).cookie("token", token, { httpOnly: true }).json({
             success: true,
+            role: user.role,
             message: 'Logged in succefully'
         })
 /*         console.log("user", JSON.stringify(user, null, 2));

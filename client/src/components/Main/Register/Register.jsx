@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { onRegistration } from '../../../api/auth';
-import { Link } from "react-router-dom";
 import useFetch from "../../../hooks/useFetch";
 
 const Register = () => {
