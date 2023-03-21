@@ -33,18 +33,17 @@ const Nav = () => {
 
   return <nav className={"nav-bar"}>
     <div>
-      <img src="" alt={"Logo"} />
+      <img src="logoyellow.png" alt={"Logo"} />
     </div>
     <div>
-      <input type="search" name="search" onChange={onChange} placeholder="Search" />
-    </div>
-    <div>
-      <Link to="/login">Acceder</Link>
-      <Link to="/register">Sign up</Link>
+      <Link to="/login" className="buttonCard"><p className="filter">Acceder</p></Link>
+      </div>
+      <div>
+      <Link to="/register" className="buttonCard"><p className="filter">Sign Up</p></Link>
     </div>
 
 
-    <button onClick={() => logout()} className='btn btn-primary'>Logout</button>
+    <button onClick={() => logout()} className="button-Input" >Logout</button>
   </nav>;
 };
 
