@@ -78,10 +78,11 @@ const Main = () => {
 
       {/*   <Route path="/" element={<Home />} /> */}
         <Route path="/courses/*" element={<Courses />} />
+        <Route  path="/comunidad" element={<Comunidad/>}  />
 
        {/*  <Route element={<PrivateRoutes />}>
         <Route  path="/courses/:course_id" element={<DetailsCourse />}  />
-        <Route  path="/comunidad" element={<Comunidad/>}  />
+        
         </Route> */}
 
         <Route path="/admin" element={<Admin />} />
