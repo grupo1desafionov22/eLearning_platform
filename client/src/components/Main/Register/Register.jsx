@@ -71,6 +71,7 @@ const Register = () => {
   <label htmlFor="username">Nombre de usuario</label>
   <input type='text' onChange={(e) => onChange(e)} 
           required 
+          className='button-Input'
           placeholder="Nombre de usuario"
           id='username'
           name='username'
@@ -80,6 +81,7 @@ const Register = () => {
 <label htmlFor="age">Edad</label>
 <input type='number' onChange={(e) => onChange(e)} 
           required 
+          className='button-Input'
           placeholder="age"
           value={values.age}
           id='age'
@@ -88,6 +90,7 @@ const Register = () => {
     <span className="input">
 <label htmlFor="identity">Género</label>
 <input type='text' onChange={(e) => onChange(e)} 
+          className='button-Input'
           placeholder="Identidad de género"
           value={values.identity}
           id='identity'
@@ -97,6 +100,7 @@ const Register = () => {
 
   <label htmlFor="email">Mail</label>
   <input type='email' onChange={(e) => onChange(e)} 
+            className='button-Input'
             required 
             placeholder="Email"  
             id='email'
@@ -107,6 +111,7 @@ const Register = () => {
   <label htmlFor="password">Contraseña</label>
   <input type='password' onChange={(e) => onChange(e)} 
             required 
+            className='button-Input'
             placeholder="Contraseña"
             value={values.password}
             id='password'
@@ -116,12 +121,13 @@ const Register = () => {
   <label htmlFor="HIV_relationship">Relación con el VIH</label>
   <input type='text' onChange={(e) => onChange(e)} 
           required 
+          className='button-Input'
           placeholder="Relación Con el VIH"
           id='HIV_relationship'
           name='HIV_relationship'
           value={values.HIV_relationship}/>
     </span>
-  <input type="submit" value="Enviar" />
+  <input type="submit" className='button-Input' value="Enviar" />
   </form>
 
   <div>{error}</div>

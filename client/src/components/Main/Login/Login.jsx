@@ -67,18 +67,19 @@ const Login = () => {
     }
   }, [handleGoogle]);
 
-  return <section>
+  return <section className="register_form">
 
     <form onSubmit={onSubmit}>
     <input type='email'
-            className='form-control'
+            className='button-Input'
             id='email'
             name='email'
             value={values.email} onChange={(e) => onChange(e)} required placeholder="Email"/>
     <input type='password' value={values.password}
             id='password'
+            className='button-Input'
             name='password'onChange={(e) => onChange(e)} required placeholder="Contraseña"/>
-    <input type="submit" value="Enviar" />
+    <input type="submit" className='button-Input' value="Enviar" />
     </form>
     
     <div id="loginDiv"></div>
