@@ -13,6 +13,10 @@ const jwt = require("jsonwebtoken");
 const userRoutes = require ('./routes/userRoutes');
 const googleRoutes = require ('./routes/googleRoutes');
 
+// Security dependencies
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
+const xss = require('xss-clean');
 
 //passport middleware
 require('./middlewares/passport_middleware')
@@ -23,6 +27,15 @@ const usersRouter = require('./routes/usersRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+// Security middleware
+app.use(helmet());
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100 // limit each IP to 100 requests per windowMs
+});
+app.use(limiter);
+app.use(xss());
 
 app.use(express.json());
 
