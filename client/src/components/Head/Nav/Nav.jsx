@@ -5,6 +5,9 @@ import { useDispatch } from 'react-redux'
 import { Link } from "react-router-dom";
 import { onLogout } from '../../../api/auth'
 import { unauthenticateUser } from '../../../redux/slices/authSlice'
+import Login from '../../Main/Login/Login'
+import './Nav.css'
+import {SiDiaspora } from "react-icons/si";
 
 const Nav = () => {
 
@@ -31,19 +34,19 @@ const Nav = () => {
   }
 
   return <nav className={"nav-bar"}>
-    <div>
-      <img src="" alt={"Logo"} />
+    <div className="allLogo">
+      <p className="logo">XOX< SiDiaspora color="#FFA500" size="40px" /></p>
     </div>
     <div>
       <input type="search" name="search" onChange={onChange} placeholder="Search" />
     </div>
     <div>
-      <Link to="/login">Acceder</Link>
-      <Link to="/admin">Admin</Link>
+      <Link to="/login" className="filter">Acceder</Link>
+      <Link to="/admin" className="filter">Admin</Link>
     </div>
 
 
-    <button onClick={() => logout()} className='btn btn-primary'>Logout</button>
+    <button onClick={() => logout()} className="button-Input" >Logout</button>
   </nav>;
 };
 

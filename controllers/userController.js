@@ -10,13 +10,13 @@ const User = require('../schemas/users');
 //hashing users password before its saved to the database with bcrypt
 const signup = async (req, res) => {
 try {
-    const { username, email, password, HIV_relationship, identity, age } = req.body;
+    const { username, email, password, hiv_relationship, identity, age } = req.body;
     const role = 'user'
     const data = {
     username,
     email,
     password: await bcrypt.hash(password, 10),
-    HIV_relationship,
+    hiv_relationship,
     identity, 
     age,
     role,

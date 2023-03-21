@@ -7,27 +7,44 @@ const Register = () => {
     email: '',
     password: '',
     username:'',
-    HIV_relationship: '',
+    hiv_relationship: '',
     identity: '',
     age: 0
-
-
   })
   const [error, setError] = useState(false)
   const [success, setSuccess] = useState(false)
+  const [isPasswordValid, setIsPasswordValid] = useState(false)
+
+  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
 
   const onChange = (e) => { 
     setValues({ ...values, [e.target.name]: e.target.value }) 
+    if (e.target.name === 'password') {
+      setIsPasswordValid(passwordRegex.test(e.target.value))
+    }
   }
 
   const onSubmit = async (e) => {
     e.preventDefault()
 
+    if (!isPasswordValid) {
+      setError('Password should have at least 8 characters, 1 letter, and 1 number')
+      setSuccess('')
+      return
+    }
+
     try {
       const { data } = await onRegistration(values)
       setError('')
       setSuccess(data.message)//mensaje para el usuario
-      setValues({ email: '', password: '' })
+      setValues({
+        email: '',
+        password: '',
+        username: '',
+        hiv_relationship: '',
+        identity: '',
+        age: 0
+      })
     } catch (error) {
       console.log(error);
       setError(error.message)
@@ -118,14 +135,14 @@ const Register = () => {
             name='password'/>
     </span>
     <span className="input">
-  <label htmlFor="HIV_relationship">Relación con el VIH</label>
+  <label htmlFor="hiv_relationship">Relación con el VIH</label>
   <input type='text' onChange={(e) => onChange(e)} 
           required 
           className='button-Input'
           placeholder="Relación Con el VIH"
-          id='HIV_relationship'
-          name='HIV_relationship'
-          value={values.HIV_relationship}/>
+          id='hiv_relationship'
+          name='hiv_relationship'
+          value={values.hiv_relationship}/>
     </span>
   <input type="submit" className='button-Input' value="Enviar" />
   </form>

@@ -28,7 +28,7 @@ const Users =db.define('users', {
       type: DataTypes.STRING,
       allowNull: false
     },
-    HIV_relationship: {
+    hiv_relationship: {
       type: DataTypes.STRING,
       allowNull: false
     },
