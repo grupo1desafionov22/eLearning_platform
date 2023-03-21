@@ -3,6 +3,7 @@ import { onLogin } from  '../../../api/auth';
 import { useDispatch } from 'react-redux';
 import { authenticateUser } from '../../../redux/slices/authSlice';
 import useFetch from "../../../hooks/useFetch";
+import { Link } from "react-router-dom";
 
 
 const Login = () => {
@@ -30,10 +31,10 @@ const Login = () => {
     } catch (error) {
       console.log(error.message)
       setError(error.message)
-/*       setError(error.response.data.errors[0].msg)
+/*    setError(error.response.data.errors[0].msg)
  */  }
   }
-  
+  //Google login
   const  handleGoogle = useFetch(
     "http://localhost:5000/google/login"
   );
@@ -75,6 +76,8 @@ const Login = () => {
     </form>
     
     <div id="loginDiv"></div>
+
+    <Link to="/register">Si aún no tienes cuenta registrate aquí</Link>
 
   </section>;
 };

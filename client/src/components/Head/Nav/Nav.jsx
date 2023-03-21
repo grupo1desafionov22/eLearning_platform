@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux'
 import { Link } from "react-router-dom";
 import {  onLogout } from '../../../api/auth'
 import { unauthenticateUser } from '../../../redux/slices/authSlice'
-import Login from '../../Main/Login/Login'
 const Nav = () => {
 
   const dispatch = useDispatch()
@@ -39,7 +38,7 @@ const Nav = () => {
   </div>
   <div>
         <Link to="/login">Acceder</Link>
-        <Link to="/register">Sign up</Link>
+        
   </div>
 
 

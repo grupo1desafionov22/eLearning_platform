@@ -52,7 +52,7 @@ const Main = () => {
     */}
         <Route
           path="/"
-          element={user?.email || isAuth ? <Navigate to="/courses" /> : <Register />}
+          element={user?.email || isAuth ? <Navigate to="/courses" /> : <Login />}
         />
         <Route
           path="/register"
@@ -80,7 +80,7 @@ const Main = () => {
         <Route path="/courses/*" element={<Courses />} />
         <Route  path="/comunidad" element={<Comunidad/>}  />
 
-       {/*  <Route element={<PrivateRoutes />}>
+        {/*  <Route element={<PrivateRoutes />}>
         <Route  path="/courses/:course_id" element={<DetailsCourse />}  />
         
         </Route> */}
