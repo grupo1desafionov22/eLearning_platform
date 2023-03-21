@@ -11,7 +11,7 @@ const ListCourses = (props) => {
   
   return (
     <section className="list">
-      <input type="search" name="search" onChange={onChange} placeholder="Search" />
+      <input className="button-Input" type="search" name="search" onChange={onChange} placeholder="Search" style={{ width: "350px" }}/>
       <h1>Cursos</h1>
       {search
         ? props.data.filter((course) => course.course_title && course.course_title.toLowerCase().includes(search.toLowerCase()))

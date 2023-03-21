@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+import { React } from "react";
+=======
+>>>>>>> develop
 
 import React from "react";
 import {  useState } from 'react'
@@ -7,6 +11,9 @@ import {  onLogout } from '../../../api/auth'
 import { unauthenticateUser } from '../../../redux/slices/authSlice'
 import Login from '../../Main/Login/Login'
 const Nav = () => {
+<<<<<<< HEAD
+  
+=======
 
   const dispatch = useDispatch()
 /*   const [loading, setLoading] = useState(true)
@@ -16,6 +23,7 @@ const Nav = () => {
   const onChange = (e) => {
     setSearch(e.target.value);
   };
+>>>>>>> develop
 
   const logout = async () => {
     try {
@@ -35,11 +43,15 @@ const Nav = () => {
     <img src="" alt={"Logo"} />
   </div>
   <div>
+<<<<<<< HEAD
+        <a href={"ruta-de-inicio-de-sesion"}>Login</a>
+=======
   <input type="search" name="search" onChange={onChange} placeholder="Search" />
   </div>
   <div>
         <Link to="/login">Acceder</Link>
         <Link to="/register">Sign up</Link>
+>>>>>>> develop
   </div>
 
 
