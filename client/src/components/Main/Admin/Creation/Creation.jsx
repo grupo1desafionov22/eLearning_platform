@@ -22,7 +22,6 @@ const Creation = () => {
     course_url: "",
     format: "",
     length: "",
-    length_unit: "",
     creator: "",
     image_url: "",
     lessons: []
@@ -52,35 +51,62 @@ const Creation = () => {
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
-    setCourse({ ...course, course_url: selectedFile });
+    // Check if the selected file is a PDF or a video
+    if (selectedFile.type === 'application/pdf' || selectedFile.type === 'video/mp4') {
+      setCourse({ ...course, course_url: selectedFile });
+    } else {
+      alert('Por favor, añade un PDF o un video');
+    }
   };
 
   const handleUpload = () => {
     const storageRef = firebase.storage().ref();
-    const pdfRef = storageRef.child(`pdfs/${course.course_url.name}`);
-    pdfRef.put(course.course_url)
+    const fileRef = storageRef.child(`files/${course.course_url.name}`);
+    fileRef
+      .put(course.course_url)
       .then((snapshot) => {
-        console.log("PDF uploaded successfully");
-        // Get the URL of the uploaded PDF file from Firebase Storage
-        pdfRef.getDownloadURL()
-          .then(url => {
-            // Update the course object with the PDF URL
+        console.log("File uploaded successfully");
+        // Get the URL of the uploaded file from Firebase Storage
+        fileRef
+          .getDownloadURL()
+          .then((url) => {
+            // Update the course object with the file URL
             const updatedCourse = { ...course, course_url: url };
             // Send the course data to the database
             const requestOptions = {
-              headers: { 'Content-Type': 'application/json' },
+              headers: { "Content-Type": "application/json" },
             };
             const { course_id, ...newCourse } = updatedCourse;
-            axios.post('http://localhost:5000/courses/create', newCourse, requestOptions)
-              .then(response => console.log(response))
-              .catch(error => console.log(error));
+            axios
+              .post(
+                "http://localhost:5000/courses/create",
+                newCourse,
+                requestOptions
+              )
+              .then((response) => {
+                console.log(response);
+                alert("Curso creado con éxito"); // show success message
+                setCourse({
+                  // clear input fields
+                  course_title: "",
+                  course_description: "",
+                  course_url: "",
+                  format: "",
+                  length: "",
+                  creator: "",
+                  image_url: "",
+                  lessons: [],
+                });
+                setNumLessons(1);
+              })
+              .catch((error) => console.log(error));
           })
-          .catch(error => console.log(error));
+          .catch((error) => console.log(error));
       })
       .catch((error) => {
-        console.error("Error uploading PDF: ", error);
+        console.error("Error uploading file: ", error);
       });
-  };  
+  };
 
   // Generate an array of JSX elements for the lesson input fields
   const lessonInputs = [];
@@ -94,24 +120,24 @@ const Creation = () => {
   }
 
   return (
-    <div>
-      <label>Title:</label>
+    <div className="creationFormat">
+      <label>Título:</label>
       <input type="text" name="course_title" value={course.course_title} onChange={handleInputChange} />
-      <label>Description:</label>
+      <label>Descripción:</label>
       <input type="text" name="course_description" value={course.course_description} onChange={handleInputChange} />
-      <label>Format:</label>
+      <label>Formato:</label>
       <input type="text" name="format" value={course.format} onChange={handleInputChange} />
-      <label>Length:</label>
-      <input type="number" name="length" value={course.length} onChange={handleInputChange} />
-      <label>Creator:</label>
+      <label>Duración:</label>
+      <input type="text" name="length" value={course.length} onChange={handleInputChange} />
+      <label>Creador:</label>
       <input type="text" name="creator" value={course.creator} onChange={handleInputChange} />
       <label>Image URL:</label>
       <input type="text" name="image_url" value={course.image_url} onChange={handleInputChange} />
       {lessonInputs}
       <button onClick={handleAddLesson}>Add Lesson</button>
-      <label>PDF:</label>
+      <label>Contenido (PDF/video):</label>
       <input type="file" name="course_url" onChange={handleFileChange} />
-      <button onClick={handleUpload}>Create Course</button>
+      <button onClick={handleUpload}>Crear curso</button>
     </div>
   );
 };

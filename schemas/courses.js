@@ -24,7 +24,7 @@ const Courses = db.define("courses", {
     allowNull: false
   },
   length: {
-    type: DataTypes.BIGINT,
+    type: DataTypes.STRING,
     defaultValue: false
   },
   creator: {

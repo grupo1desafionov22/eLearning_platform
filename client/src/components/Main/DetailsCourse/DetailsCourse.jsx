@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
@@ -8,6 +8,8 @@ const DetailsCourse = () => {
   const [course, setCourse] = useState({});
   const [error, setError] = useState(null);
   const [showPdf, setShowPdf] = useState(false);
+  const [isFullScreen, setIsFullScreen] = useState(false);
+  const pdfViewerRef = useRef(null);
 
   useEffect(() => {
     axios
@@ -16,12 +18,47 @@ const DetailsCourse = () => {
       .catch((error) => setError(error));
   }, [course_id]);
 
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullScreen(document.fullscreenElement != null);
+    };
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    document.addEventListener("webkitfullscreenchange", handleFullscreenChange);
+    document.addEventListener("msfullscreenchange", handleFullscreenChange);
+    return () => {
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+      document.removeEventListener("webkitfullscreenchange", handleFullscreenChange);
+      document.removeEventListener("msfullscreenchange", handleFullscreenChange);
+    };
+  }, []);
+
   if (error) {
     return <div>Error: {error.message}</div>;
   }
 
   const handlePdfButtonClick = () => {
     setShowPdf(true);
+  };
+
+  const handleFullscreenButtonClick = () => {
+    if (!isFullScreen) {
+      if (pdfViewerRef.current.requestFullscreen) {
+        pdfViewerRef.current.requestFullscreen();
+      } else if (pdfViewerRef.current.webkitRequestFullscreen) { /* Safari */
+        pdfViewerRef.current.webkitRequestFullscreen();
+      } else if (pdfViewerRef.current.msRequestFullscreen) { /* IE11 */
+        pdfViewerRef.current.msRequestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) { /* Safari */
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) { /* IE11 */
+        document.msExitFullscreen();
+      }
+    }
+    setIsFullScreen(!isFullScreen);
   };
 
   return (
@@ -38,19 +75,27 @@ const DetailsCourse = () => {
             course.lessons.map((lesson, index) => <li key={index}>{lesson}</li>)}
         </ol>
         {course.course_url && (
-          <button onClick={handlePdfButtonClick}>View PDF</button>
-        )}
-        {showPdf && (
-          <iframe
-            src={course.course_url}
-            title="PDF Viewer"
-            width="100%"
-            height="500"
-          />
+          <div>
+            <button onClick={handlePdfButtonClick}>View content</button>
+            {showPdf && (
+              <div>
+                <button onClick={handleFullscreenButtonClick}>
+                  {isFullScreen ? "Exit Fullscreen" : "⛶"}
+                </button>
+                <iframe
+                  src={course.course_url}
+                  title="PDF Viewer"
+                  width="100%"
+                  height="500"
+                  ref={pdfViewerRef}
+                />
+              </div>
+            )}
+          </div>
         )}
       </article>
     </section>
-  );
+);
 };
 
 export default DetailsCourse;
