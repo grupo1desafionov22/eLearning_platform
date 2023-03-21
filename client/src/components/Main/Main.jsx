@@ -39,15 +39,12 @@ const Main = () => {
   return <main className="mainFormat">
 
     <Routes>
-
-  
       {/*   <Route path="/" element={<Home />} />
         <Route element={<PrivateRoutes />}>
         <Route path="/home" element={<Admin />} />
         <Route path="/details" element={<Details />} />
         </Route>
     */}
-          <Routes>
         <Route
           path="/"
           element={user?.email || isAuth ? <Navigate to="/home" /> : <Admin />}
