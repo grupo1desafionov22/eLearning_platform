@@ -8,6 +8,7 @@ import { unauthenticateUser } from '../../../redux/slices/authSlice'
 import Login from '../../Main/Login/Login'
 import './Nav.css'
 import {SiDiaspora } from "react-icons/si";
+import { escape } from 'lodash';
 
 const Nav = () => {
 
@@ -15,10 +16,10 @@ const Nav = () => {
   /*   const [loading, setLoading] = useState(true)
     const [protectedData, setProtectedData] = useState(null) */
 
-  const [search, setSearch] = useState("");
-  const onChange = (e) => {
-    setSearch(e.target.value);
-  };
+    const [search, setSearch] = useState("");
+    const onChange = (e) => {
+      setSearch(escape(e.target.value));
+    };
 
   const logout = async () => {
     try {

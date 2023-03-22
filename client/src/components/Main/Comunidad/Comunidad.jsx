@@ -1,6 +1,7 @@
 
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import { escape } from 'lodash';
 import './Comunidad.css';
 
 const Comunidad = () => {
@@ -12,7 +13,7 @@ const Comunidad = () => {
     // Validar campos
     const name = event.target.elements.user_name.value;
     const email = event.target.elements.user_email.value;
-    const message = event.target.elements.message.value;
+    const message = escape(event.target.elements.message.value);
 
     const nameRegex = /^[a-zA-Z ]{5,}$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

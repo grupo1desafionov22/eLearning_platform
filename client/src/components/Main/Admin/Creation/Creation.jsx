@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/storage";
 import axios from 'axios';
+import { escape } from "lodash";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -37,11 +38,11 @@ const Creation = () => {
       const lessonNum = parseInt(name.split("_")[1]);
       // Create a new copy of the lessons array with the new value at the correct index
       const newLessons = [...course.lessons];
-      newLessons[lessonNum - 1] = value;
+      newLessons[lessonNum - 1] = escape(value);
       // Update the course state with the new lessons array
       setCourse({ ...course, lessons: newLessons });
     } else {
-      setCourse({ ...course, [name]: value });
+      setCourse({ ...course, [name]: escape(value) });
     }
   };
 
@@ -52,7 +53,7 @@ const Creation = () => {
   const handleFileChange = (event) => {
     const selectedFile = event.target.files && event.target.files[0];
     const url = event.target.value;
-  
+
     if (selectedFile) {
       if (selectedFile.type === 'application/pdf' || selectedFile.type === 'video/mp4') {
         setCourse({ ...course, course_url: selectedFile });
@@ -60,7 +61,7 @@ const Creation = () => {
         alert('Por favor, añade un PDF o un video');
       }
     } else if (url.startsWith("http") || url.startsWith("https")) {
-      setCourse({ ...course, course_url: url });
+      setCourse({ ...course, course_url: escape(url) });
     } else {
       alert('Por favor, añade un PDF, un video, o una URL');
     }
