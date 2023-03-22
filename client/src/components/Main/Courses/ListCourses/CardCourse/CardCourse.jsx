@@ -11,7 +11,7 @@ const CardCourse = (props) => {
     <>
      
        <article className="list-card">
-        <div>
+        <div className="info-course">
         <h3>{props.data.course_title.toUpperCase()}</h3>
         <p>{props.data.course_description}</p>
         <button className="favorites"><TfiHeart /> Añadir</button>
