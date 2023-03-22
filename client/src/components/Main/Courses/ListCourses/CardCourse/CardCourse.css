@@ -1,0 +1,45 @@
+.button-Input{
+    border-radius: 2em;
+    border: 1px solid #cfcccc;
+    padding: 12px;
+    margin: 15px;
+    background-color: transparent;
+
+}
+
+
+.favorites{
+    border: none;
+    background-color: transparent;
+    padding: 10px;
+   
+}
+
+.list-card{
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: center;
+    text-align: justify;
+    align-items: center;
+    padding: 15px;
+    margin: 10px;
+  
+      
+    
+}
+
+.info-course{
+     padding: 10px;
+     margin: 10px;
+}
+.img-card{
+    border-radius: 2em;
+}
+
+@media (min-width: 700px) {
+    .info-course{
+        max-width: 720px;
+        padding: 10px;
+        margin: 10px;
+   }
+}
