@@ -19,7 +19,6 @@ const Admincardcourse = (props) => {
       <p>{props.data.course_description}</p>
       <button onClick={handleEdit}>Edit</button>
       <button onClick={handleDelete}>Delete</button>
-      <img src={props.data.course_url} alt={props.data.title} />
     </>
   );
 };
