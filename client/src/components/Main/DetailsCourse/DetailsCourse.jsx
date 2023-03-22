@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import './DetailsCourse.css'
+import { Link } from "react-router-dom";
+
 
 const DetailsCourse = () => {
   const { course_id } = useParams();
@@ -62,38 +65,46 @@ const DetailsCourse = () => {
   };
 
   return (
-    <section style={{ backgroundColor: "blue" }}>
-      <h1> Detalles </h1>
-      <article className="course-card">
-        <h1>{course.course_title}</h1>
+    <section >
+      
+      <article className="course-detail">
+        <h1>Detalles del curso: {course.course_title}</h1>
         <p>Description: {course.course_description}</p>
         <p>Formato: {course.format}</p>
         <p>Tamaño: {course.length}</p>
-        <img src={course.image_url} alt="" />
+        <img className="img-detail" src={course.image_url} alt={course.course_title} style={{width: '250px', height: '180px'}}/>
+        
+
+        </article>
         <ol>
+
           {course.lessons &&
             course.lessons.map((lesson, index) => <li key={index}>{lesson}</li>)}
         </ol>
-        {course.course_url && (
-          <div>
-            <button onClick={handlePdfButtonClick}>View content</button>
-            {showPdf && (
-              <div>
-                <button onClick={handleFullscreenButtonClick}>
-                  {isFullScreen ? "Exit Fullscreen" : "⛶"}
-                </button>
-                <iframe
-                  src={course.course_url}
-                  title="PDF Viewer"
-                  width="100%"
-                  height="500"
-                  ref={pdfViewerRef}
-                />
-              </div>
-            )}
-          </div>
-        )}
-      </article>
+       {course.course_url && (
+  <div>
+    {!showPdf && (
+      <button onClick={handlePdfButtonClick} className="button-Input">Ver contenido</button>
+    )}
+    <Link to="/courses"><button className="button-Input">Regresar a Cursos</button></Link>
+    
+    {showPdf && (
+      <div>
+        <button onClick={handleFullscreenButtonClick}>
+          {isFullScreen ? "Exit Fullscreen" : "⛶"}
+        </button>
+        <iframe
+          src={course.course_url}
+          title="PDF Viewer"
+          width="100%"
+          height="500"
+          ref={pdfViewerRef}
+        />
+      </div>
+    )}
+  </div>
+)}
+      
     </section>
 );
 };

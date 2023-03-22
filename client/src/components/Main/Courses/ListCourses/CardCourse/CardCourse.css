@@ -19,6 +19,7 @@
     display: flex;
     flex-flow: wrap row;
     justify-content: center;
+    text-align: justify;
     align-items: center;
     padding: 15px;
     margin: 10px;
@@ -27,7 +28,18 @@
     
 }
 
+.info-course{
+     padding: 10px;
+     margin: 10px;
+}
 .img-card{
     border-radius: 2em;
 }
 
+@media (min-width: 700px) {
+    .info-course{
+        max-width: 720px;
+        padding: 10px;
+        margin: 10px;
+   }
+}

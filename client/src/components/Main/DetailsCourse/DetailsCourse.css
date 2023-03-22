@@ -1,0 +1,30 @@
+.course-detail{
+  
+    padding: 10px;
+    text-align: justify;
+    align-items: center;
+
+}
+
+@media (min-width: 700px) {
+    .course-detail{
+        max-width: 720px;
+        padding: 10px;
+        margin: 10px;
+   }
+   section{
+    background-color:transparent;
+    padding: 10px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+
+}
+
+.img-detail{
+    border-radius: 2em;
+}
