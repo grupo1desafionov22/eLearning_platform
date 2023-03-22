@@ -12,6 +12,7 @@ import Creation from './Admin/Creation';
 import Edition from './Admin/Edition';
 import DetailsCourse from "./DetailsCourse/DetailsCourse";
 import Comunidad from "./Comunidad/Comunidad";
+import Explore from "./Explore/Explore";
 
 
 
@@ -70,7 +71,10 @@ const Main = () => {
           path="/courses/:course_id"
           element={user?.email || isAuth ? <DetailsCourse  user={user} /> : <Navigate to="/" />}
         />
-
+        <Route
+          path="/explora"
+          element={user?.email || isAuth ? <Explore  user={user} /> : <Navigate to="/" />}
+        />
         <Route path="*" element={<NotFound />} />
 
 

@@ -34,7 +34,7 @@ const corsOptions ={
 }
 app.use(
     cors({
-      origin: ["http://localhost:3000"],
+      origin: ["http://localhost:3000", 'http://seenstevo.pythonanywhere.com/recom?user_id=2&course_id=4'],
       methods: "GET,POST,PUT,DELETE,OPTIONS",
       credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
