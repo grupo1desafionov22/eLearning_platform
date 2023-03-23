@@ -18,14 +18,15 @@
 .list-card{
     display: flex;
     flex-flow: wrap row;
-    justify-content: center;
+    justify-content:space-around;
     text-align: justify;
     align-items: center;
     padding: 15px;
     margin: 10px;
-  
-      
-    
+    background-color: #ffffff;
+    border-radius: 2em;
+    border: 1px solid black;
+    min-width: 95%;
 }
 
 .info-course{

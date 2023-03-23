@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { escape } from "lodash";
 
 const Edition = () => {
   const { course_id } = useParams();
@@ -26,12 +27,12 @@ const Edition = () => {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...formData, [name]: escape(value) });
   };
-
+  
   const handleLessonChange = (index, event) => {
     const newLessons = [...formData.lessons];
-    newLessons[index] = event.target.value;
+    newLessons[index] = escape(event.target.value);
     setFormData({ ...formData, lessons: newLessons });
   }
 

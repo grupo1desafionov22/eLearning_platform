@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/storage";
 import axios from 'axios';
+import { escape } from "lodash";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -37,11 +38,11 @@ const Creation = () => {
       const lessonNum = parseInt(name.split("_")[1]);
       // Create a new copy of the lessons array with the new value at the correct index
       const newLessons = [...course.lessons];
-      newLessons[lessonNum - 1] = value;
+      newLessons[lessonNum - 1] = escape(value);
       // Update the course state with the new lessons array
       setCourse({ ...course, lessons: newLessons });
     } else {
-      setCourse({ ...course, [name]: value });
+      setCourse({ ...course, [name]: escape(value) });
     }
   };
 
@@ -52,7 +53,7 @@ const Creation = () => {
   const handleFileChange = (event) => {
     const selectedFile = event.target.files && event.target.files[0];
     const url = event.target.value;
-  
+
     if (selectedFile) {
       if (selectedFile.type === 'application/pdf' || selectedFile.type === 'video/mp4') {
         setCourse({ ...course, course_url: selectedFile });
@@ -60,7 +61,7 @@ const Creation = () => {
         alert('Por favor, añade un PDF o un video');
       }
     } else if (url.startsWith("http") || url.startsWith("https")) {
-      setCourse({ ...course, course_url: url });
+      setCourse({ ...course, course_url: escape(url) });
     } else {
       alert('Por favor, añade un PDF, un video, o una URL');
     }
@@ -162,25 +163,34 @@ const Creation = () => {
 
   return (
     <div className="creationFormat">
-      <label>Título:</label>
-      <input type="text" name="course_title" value={course.course_title} onChange={handleInputChange} />
-      <label>Descripción:</label>
-      <input type="text" name="course_description" value={course.course_description} onChange={handleInputChange} />
-      <label>Formato:</label>
-      <input type="text" name="format" value={course.format} onChange={handleInputChange} />
-      <label>Duración:</label>
-      <input type="text" name="length" value={course.length} onChange={handleInputChange} />
-      <label>Creador:</label>
-      <input type="text" name="creator" value={course.creator} onChange={handleInputChange} />
-      <label>Image URL:</label>
-      <input type="text" name="image_url" value={course.image_url} onChange={handleInputChange} />
-      {lessonInputs}
-      <button onClick={handleAddLesson}>Add Lesson</button>
-      <label>Contenido (PDF/video):</label>
-      <input type="file" name="course_url" onChange={handleFileChange} />
-      <label>Contenido (PDF/video o URL):</label>
-      <input type="text" name="course_url" value={course.course_url} onChange={handleFileChange} />
-      <button onClick={handleUpload}>Crear curso</button>
+
+      <h1> Crear Curso</h1>
+      <section className='comunidad'>
+        <div className="list">
+        <label>Título:</label>
+        <input type="text" name="course_title" value={course.course_title} onChange={handleInputChange} className="button-Input"  />
+        <label>Descripción:</label>
+        <input type="text" name="course_description" value={course.course_description} onChange={handleInputChange} className="button-Input"  />
+        <label>Formato:</label>
+        <input type="text" name="format" value={course.format} onChange={handleInputChange}  className="button-Input" />
+        <label>Duración:</label>
+        <input type="text" name="length" value={course.length} onChange={handleInputChange} className="button-Input" />
+        <label>Creador:</label>
+        <input type="text" name="creator" value={course.creator} onChange={handleInputChange} className="button-Input"  />
+        </div>
+        <div className="list">
+        <label>Image URL:</label>
+        <input type="text" name="image_url" value={course.image_url} onChange={handleInputChange} className="button-Input" />
+        <button onClick={handleAddLesson}  className="button-Input">Añadir tema</button>
+        {lessonInputs } <br/>
+        <label>Contenido (PDF/video):</label>
+        <input type="file" name="course_url" onChange={handleFileChange}   />
+        <label>Contenido (PDF/video o URL):</label>
+        <input type="text" name="course_url" value={course.course_url} onChange={handleFileChange} className="button-Input" />
+        <button onClick={handleUpload}  className="button-Input">Crear curso</button>
+        </div>
+        <iframe src="https://embed.lottiefiles.com/animation/127379"></iframe>
+        </section>
     </div>
   );
 };

@@ -12,6 +12,7 @@ import Creation from './Admin/Creation';
 import Edition from './Admin/Edition';
 import DetailsCourse from "./DetailsCourse/DetailsCourse";
 import Comunidad from "./Comunidad/Comunidad";
+import Explore from "./Explore/Explore";
 
 
 
@@ -34,7 +35,8 @@ const RestrictedRoutes = () => {
 const Main = () => {
   //const isAdmin =  
   //console.log(isAdmin);
-  const isAdminUser = useSelector((state) => state.user.role === 'admin') 
+  const isAdminUser = useSelector((state) => state.user.role === 'admin');
+  console.log(isAdminUser);
   const { isAuth } = useSelector((state) => state.auth)
   const [user, setUser] = useState({});
   useEffect(() => {
@@ -70,17 +72,16 @@ const Main = () => {
           path="/courses/:course_id"
           element={user?.email || isAuth ? <DetailsCourse  user={user} /> : <Navigate to="/" />}
         />
-
+        <Route
+          path="/explora"
+          element={user?.email || isAuth ? <Explore  user={user} /> : <Navigate to="/" />}
+        />
         <Route path="*" element={<NotFound />} />
 
 
         <Route path="/courses/*" element={<Courses />} />
         <Route  path="/comunidad" element={<Comunidad/>}  />
 
-        <Route
-          path="/admin"
-          element={isAdminUser  ? <Admin  user={user} /> : <Navigate to="/" />}
-        />
 
         <Route
           path="/admin"
@@ -107,6 +108,10 @@ const Main = () => {
         <Route path="/admin/edition/:course_id" element={<Edition />} /> */}
 
       </Routes>
+      <button style={{ position: 'fixed', bottom: '50px', right: '20px' }} class="button-Input-panico" onClick={() => window.location.href = "https://www.google.es"}>
+  Botón del Pánico
+</button>
+
   </main>;
 };
 
