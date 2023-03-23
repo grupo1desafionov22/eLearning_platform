@@ -30,7 +30,19 @@ const deleteCourse = async (req, res) => {
     res.status(200).json(deleted);
 };
 
-
+const getCourseExplore =  async (req, res) => {
+    const url = `http://seenstevo.pythonanywhere.com/recom?user_id=5&course_id=6`;
+  
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      res.send(data);
+    } catch (error) {
+      console.error(error);
+      res.sendStatus(500);
+    }
+  
+};
 
 
 const courses = {
@@ -39,6 +51,7 @@ const courses = {
     createCourse,
     updateCourse,
     deleteCourse,
+    getCourseExplore
    
 
 

@@ -7,19 +7,24 @@ import ExploreList from './ExploreList/ExploreList'
 const Explore = () => {
 
   const [courses, setCourses] = useState([]);
+  const proxyUrl = 'https://thingproxy.freeboard.io/fetch/';
+  const url = 'http://seenstevo.pythonanywhere.com/recom?user_id=2&course_id=4';
+  
+  fetch(proxyUrl + url)
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error('Network response was not ok.');
+    })
+    .then(data => {
+      console.log(data);
+    })
+    .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
 
-  const getRecomended = () => {
-    axios.get(' http://seenstevo.pythonanywhere.com/recom?user_id=2&course_id=4')
-    .then(res => console.log(res))
-  }
 
-  useEffect(() => {
-    axios.get('http://localhost:5000/courses/all')
-      .then(response => setCourses(response.data))
-      .catch(error => console.error(error));
-  }, [setCourses]);
-
-  getRecomended()
 
   return (
     <section >

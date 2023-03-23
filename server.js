@@ -27,19 +27,16 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 
 app.use(cookieParser());
+
 const corsOptions ={
-    origin:'http://localhost:3000', 
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
-}
-app.use(
-    cors({
-      origin: ["http://localhost:3000", 'http://seenstevo.pythonanywhere.com/recom?user_id=2&course_id=4'],
-      methods: "GET,POST,PUT,DELETE,OPTIONS",
-      credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
-    })
-  );
+  origin: ['http://localhost:3000', 'http://seenstevo.pythonanywhere.com'],
+  methods: 'GET,POST,PUT,DELETE,OPTIONS',
+  allowedHeaders: 'Content-Type, Authorization',
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 app.use(passport.initialize())
 
 //synchronizing the database and forcing it to false so we dont lose data
