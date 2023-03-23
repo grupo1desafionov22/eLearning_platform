@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import ig from '../assets/insta.jpg';
+import fb from '../assets/facebook.png';
 
 const Map = () => {
   useEffect(() => {
@@ -53,10 +55,10 @@ const Map = () => {
             <p></p>
             <div>
               <a href="https://www.facebook.com/gtt.vih/?locale=es_ES">
-                <img className="social" src="https://i.pinimg.com/564x/ca/3b/f0/ca3bf05cfab74677e5b73b130bd30991.jpg" alt="facebook" />
+                <img className="social" src={fb} alt="facebook" />
               </a>
               <a href="https://www.instagram.com/gtt_vih/">
-                <img className="social" src="https://i.pinimg.com/originals/02/77/12/027712250a632b2e6f63c5466b792494.png" alt="instagram" />
+                <img className="social" src={ig} alt="instagram" />
               </a>
             </div>
           </article>

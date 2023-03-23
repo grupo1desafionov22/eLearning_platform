@@ -16,7 +16,7 @@ import Explore from "./Explore/Explore";
 
 
 
-const PrivateRoutes = () => {
+/* const PrivateRoutes = () => {
 
 
   const { isAuth } = useSelector((state) => state.auth)
@@ -29,14 +29,12 @@ const RestrictedRoutes = () => {
   const { isAuth } = useSelector((state) => state.auth)
 
   return <>{!isAuth ? <Outlet /> : <Navigate to='/login' />}</>
-}
+} */
 
 
 const Main = () => {
-  //const isAdmin =  
-  //console.log(isAdmin);
+ 
   const isAdminUser = useSelector((state) => state.user.role === 'admin');
-  console.log(isAdminUser);
   const { isAuth } = useSelector((state) => state.auth)
   const [user, setUser] = useState({});
   useEffect(() => {
@@ -108,7 +106,7 @@ const Main = () => {
         <Route path="/admin/edition/:course_id" element={<Edition />} /> */}
 
       </Routes>
-      <button style={{ position: 'fixed', bottom: '50px', right: '20px' }} class="button-Input-panico" onClick={() => window.location.href = "https://www.google.es"}>
+      <button style={{ position: 'fixed', bottom: '50px', right: '20px' }} className="button-Input-panico" onClick={() => window.location.href = "https://www.google.es"}>
   Botón del Pánico
 </button>
 

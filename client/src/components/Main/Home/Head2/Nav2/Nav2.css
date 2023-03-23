@@ -1,7 +1,7 @@
 
 .filter{ 
     font-size: 20px;
-    color: black;
+    color: #7D206D;
     padding: 10px;
     margin: 5px;
 
@@ -23,4 +23,6 @@
     margin: 15px;
     background-color: #ff6700;
     font-size: 200%;
+    color: white;
+    z-index: 1;
 }
