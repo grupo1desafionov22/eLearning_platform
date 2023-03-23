@@ -1,0 +1,22 @@
+.data-iframe{
+    width: auto;
+    margin: 10px;
+
+}
+
+
+@media (min-width: 700px) {
+    .data-iframe{
+        min-width: 1080px;
+        min-height: 780px;
+        padding: 10px;
+        margin: 30px;
+        border: 0.5px solid orange;
+        border-radius: 2em;
+     
+   }
+}
+
+section{
+    align-items: center;
+}
