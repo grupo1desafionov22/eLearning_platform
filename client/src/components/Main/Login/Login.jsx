@@ -6,6 +6,7 @@ import useFetch from "../../../hooks/useFetch";
 import { Link } from "react-router-dom";
 import { setUserRole } from '../../../redux/slices/userSlice';
 import DOMPurify from 'dompurify';
+import moradoImage from '../../assets/morado.png';
 
 const Login = () => {
 
@@ -73,12 +74,17 @@ const Login = () => {
 
   return <section className="register_form">
 
+    <img className="logo" src={moradoImage} alt="My" />
+    <h3>Nos alegra volver a verte</h3>
+
     <form onSubmit={onSubmit}>
+      <label htmlFor="email">Usuario</label>
     <input type='email'
             className='button-Input'
             id='email'
             name='email'
             value={DOMPurify.sanitize(values.email)} onChange={(e) => onChange(e)} required placeholder="Email"/>
+      <label htmlFor="password">Contraseña</label>
     <input type='password' value={values.password}
             id='password'
             className='button-Input'
