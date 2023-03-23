@@ -35,7 +35,8 @@ const RestrictedRoutes = () => {
 const Main = () => {
   //const isAdmin =  
   //console.log(isAdmin);
-  const isAdminUser = useSelector((state) => state.user.role === 'admin') 
+  const isAdminUser = useSelector((state) => state.user.role === 'admin');
+  console.log(isAdminUser);
   const { isAuth } = useSelector((state) => state.auth)
   const [user, setUser] = useState({});
   useEffect(() => {
@@ -81,10 +82,6 @@ const Main = () => {
         <Route path="/courses/*" element={<Courses />} />
         <Route  path="/comunidad" element={<Comunidad/>}  />
 
-        <Route
-          path="/admin"
-          element={isAdminUser  ? <Admin  user={user} /> : <Navigate to="/" />}
-        />
 
         <Route
           path="/admin"
