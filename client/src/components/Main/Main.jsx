@@ -111,6 +111,10 @@ const Main = () => {
         <Route path="/admin/edition/:course_id" element={<Edition />} /> */}
 
       </Routes>
+      <button style={{ position: 'fixed', bottom: '50px', right: '20px' }} class="button-Input-panico" onClick={() => window.location.href = "https://www.google.es"}>
+  Botón del Pánico
+</button>
+
   </main>;
 };
 

@@ -7,6 +7,7 @@ import { onLogout } from '../../../api/auth'
 import { unauthenticateUser } from '../../../redux/slices/authSlice'
 import Login from '../../Main/Login/Login'
 import './Nav.css'
+import moradoImage from '../../assets/morado.png';
 import { escape } from 'lodash';
 
 const Nav = () => {
@@ -34,12 +35,9 @@ const Nav = () => {
   }
 
   return <nav className={"nav-bar"}>
-    <img  src="../../assets/xox transparente morado.png"/>
+    <img className="logo" src={moradoImage} alt="My" />
     <Link to="/login" className="buttonCard"><p className="filter"> Acceder</p> </Link>
     <Link to="/admin"  className="buttonCard"><p className="filter">Admin</p></Link>
-    
-
-
     <button onClick={() => logout()} className="button-Input" >Logout</button>
   </nav>;
 };
