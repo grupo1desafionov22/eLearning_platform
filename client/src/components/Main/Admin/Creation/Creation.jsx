@@ -156,7 +156,7 @@ const Creation = () => {
     lessonInputs.push(
       <div key={i}>
         <label>Lesson {i}:</label>
-        <input type="text" name={`lesson_${i}`} value={course.lessons[i - 1] || ""} onChange={handleInputChange} />
+        <input type="text" name={`lesson_${i}`} className="button-Input" value={course.lessons[i - 1] || ""} onChange={handleInputChange} />
       </div>
     );
   }
@@ -184,7 +184,7 @@ const Creation = () => {
         <button onClick={handleAddLesson}  className="button-Input">Añadir tema</button>
         {lessonInputs } <br/>
         <label>Contenido (PDF/video):</label>
-        <input type="file" name="course_url" onChange={handleFileChange}   />
+        <input type="file" name="course_url" onChange={handleFileChange}  className="button-Input" />
         <label>Contenido (PDF/video o URL):</label>
         <input type="text" name="course_url" value={course.course_url} onChange={handleFileChange} className="button-Input" />
         <button onClick={handleUpload}  className="button-Input">Crear curso</button>

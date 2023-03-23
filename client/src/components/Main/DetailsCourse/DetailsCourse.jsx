@@ -90,8 +90,8 @@ const DetailsCourse = () => {
     
     {showPdf && (
       <div>
-        <button onClick={handleFullscreenButtonClick}>
-          {isFullScreen ? "Exit Fullscreen" : "⛶"}
+        <button onClick={handleFullscreenButtonClick} className="button-Input">
+          {isFullScreen ? "Exit Fullscreen" : "Maximizar contenido"}
         </button>
         <iframe
           src={course.course_url}

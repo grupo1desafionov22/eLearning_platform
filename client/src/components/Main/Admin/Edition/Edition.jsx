@@ -54,23 +54,23 @@ const Edition = () => {
       <h1> Detalles </h1>
       <form onSubmit={handleSubmit} className="editionFormat">
         <label htmlFor="course_title">Título:</label>
-        <input type="text" name="course_title" value={formData.course_title} onChange={handleInputChange} />
+        <input type="text" name="course_title" className="button-Input" value={formData.course_title} onChange={handleInputChange} />
         <label htmlFor="course_description">Descripción:</label>
-        <input type="text" name="course_description" value={formData.course_description} onChange={handleInputChange} />
+        <input type="text" name="course_description" className="button-Input" value={formData.course_description} onChange={handleInputChange} />
         <label htmlFor="format">Formato:</label>
-        <input type="text" name="format" value={formData.format} onChange={handleInputChange} />
+        <input type="text" name="format" className="button-Input" value={formData.format} onChange={handleInputChange} />
         <label htmlFor="length">Tamaño:</label>
-        <input type="text" name="length" value={formData.length} onChange={handleInputChange} />
+        <input type="text" name="length" className="button-Input" value={formData.length} onChange={handleInputChange} />
         <label htmlFor="creator">Creador:</label>
-        <input type="text" name="creator" value={formData.creator} onChange={handleInputChange} />
+        <input type="text" name="creator" className="button-Input" value={formData.creator} onChange={handleInputChange} />
         <label htmlFor="image_url">URL de la imagen:</label>
-        <input type="text" name="image_url" value={formData.image_url} onChange={handleInputChange} />
+        <input type="text" name="image_url" className="button-Input" value={formData.image_url} onChange={handleInputChange} />
         <label htmlFor="lessons">Lecciones:</label>
         {formData.lessons.map((lesson, index) => (
-          <input key={index} type="text" value={lesson} onChange={(e) => handleLessonChange(index, e)} />
+          <input key={index} type="text" className="button-Input" value={lesson} onChange={(e) => handleLessonChange(index, e)} />
         ))}
-        <button type="button" onClick={handleAddLesson}>Agregar lección</button>
-        <button type="submit">Actualizar</button>
+        <button type="button" className="button-Input" onClick={handleAddLesson}>Agregar lección</button>
+        <button type="submit" className="button-Input">Actualizar</button>
       </form>
     </section>
   );

@@ -7,6 +7,16 @@
 
 }
 
+.button-Input:hover{
+    border-radius: 2em;
+    border: 1px solid #cfcccc;
+    padding: 12px;
+    margin: 15px;
+    background-color: #7D206D;
+    color: white;
+
+}
+
 
 .favorites{
     border: none;
