@@ -36,6 +36,11 @@ const corsOptions ={
   optionsSuccessStatus: 200
 };
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', corsOptions.origin);
+  next();
+});
+
 app.use(cors(corsOptions));
 app.use(passport.initialize())
 
