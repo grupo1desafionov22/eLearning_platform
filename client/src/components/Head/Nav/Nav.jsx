@@ -35,10 +35,9 @@ const Nav = () => {
 
   return <nav className={"nav-bar"}>
     <img  src="../../assets/xox transparente morado.png"/>
-    <div>
-      <Link to="/login" className="filter">Acceder</Link>
-      <Link to="/admin" className="filter">Admin</Link>
-    </div>
+    <Link to="/login" className="buttonCard"><p className="filter"> Acceder</p> </Link>
+    <Link to="/admin"  className="buttonCard"><p className="filter">Admin</p></Link>
+    
 
 
     <button onClick={() => logout()} className="button-Input" >Logout</button>

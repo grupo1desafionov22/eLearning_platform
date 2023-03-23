@@ -163,25 +163,34 @@ const Creation = () => {
 
   return (
     <div className="creationFormat">
-      <label>Título:</label>
-      <input type="text" name="course_title" value={course.course_title} onChange={handleInputChange} />
-      <label>Descripción:</label>
-      <input type="text" name="course_description" value={course.course_description} onChange={handleInputChange} />
-      <label>Formato:</label>
-      <input type="text" name="format" value={course.format} onChange={handleInputChange} />
-      <label>Duración:</label>
-      <input type="text" name="length" value={course.length} onChange={handleInputChange} />
-      <label>Creador:</label>
-      <input type="text" name="creator" value={course.creator} onChange={handleInputChange} />
-      <label>Image URL:</label>
-      <input type="text" name="image_url" value={course.image_url} onChange={handleInputChange} />
-      {lessonInputs}
-      <button onClick={handleAddLesson}>Add Lesson</button>
-      <label>Contenido (PDF/video):</label>
-      <input type="file" name="course_url" onChange={handleFileChange} />
-      <label>Contenido (PDF/video o URL):</label>
-      <input type="text" name="course_url" value={course.course_url} onChange={handleFileChange} />
-      <button onClick={handleUpload}>Crear curso</button>
+
+      <h1> Crear Curso</h1>
+      <section className='comunidad'>
+        <div className="list">
+        <label>Título:</label>
+        <input type="text" name="course_title" value={course.course_title} onChange={handleInputChange} className="button-Input"  />
+        <label>Descripción:</label>
+        <input type="text" name="course_description" value={course.course_description} onChange={handleInputChange} className="button-Input"  />
+        <label>Formato:</label>
+        <input type="text" name="format" value={course.format} onChange={handleInputChange}  className="button-Input" />
+        <label>Duración:</label>
+        <input type="text" name="length" value={course.length} onChange={handleInputChange} className="button-Input" />
+        <label>Creador:</label>
+        <input type="text" name="creator" value={course.creator} onChange={handleInputChange} className="button-Input"  />
+        </div>
+        <div className="list">
+        <label>Image URL:</label>
+        <input type="text" name="image_url" value={course.image_url} onChange={handleInputChange} className="button-Input" />
+        <button onClick={handleAddLesson}  className="button-Input">Añadir tema</button>
+        {lessonInputs } <br/>
+        <label>Contenido (PDF/video):</label>
+        <input type="file" name="course_url" onChange={handleFileChange}   />
+        <label>Contenido (PDF/video o URL):</label>
+        <input type="text" name="course_url" value={course.course_url} onChange={handleFileChange} className="button-Input" />
+        <button onClick={handleUpload}  className="button-Input">Crear curso</button>
+        </div>
+        <iframe src="https://embed.lottiefiles.com/animation/127379"></iframe>
+        </section>
     </div>
   );
 };
