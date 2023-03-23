@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux'
 import { Link } from "react-router-dom";
 import { onLogout } from '../../../api/auth'
 import { unauthenticateUser } from '../../../redux/slices/authSlice'
-import Login from '../../Main/Login/Login'
 import './Nav.css'
 import {SiDiaspora } from "react-icons/si";
 
@@ -27,6 +26,8 @@ const Nav = () => {
       dispatch(unauthenticateUser())
       localStorage.removeItem('isAuth');
       localStorage.removeItem("user");
+      localStorage.removeItem("userRole");
+
       window.location.reload();
     } catch (error) {
       console.log(error.response)
