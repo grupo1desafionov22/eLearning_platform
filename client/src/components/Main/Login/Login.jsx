@@ -5,6 +5,7 @@ import { authenticateUser } from '../../../redux/slices/authSlice';
 import useFetch from "../../../hooks/useFetch";
 import { Link } from "react-router-dom";
 import { setUserRole } from '../../../redux/slices/userSlice';
+import DOMPurify from 'dompurify';
 
 const Login = () => {
 
@@ -16,8 +17,11 @@ const Login = () => {
   // eslint-disable-next-line 
   const [error, setError] = useState(false);
   const onChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value })
+    const name = e.target.name;
+    const value = DOMPurify.sanitize(e.target.value);
+    setValues({ ...values, [name]: value });
   }
+  
   const dispatch = useDispatch();
 
   const onSubmit = async (e) => {
@@ -74,7 +78,7 @@ const Login = () => {
             className='button-Input'
             id='email'
             name='email'
-            value={values.email} onChange={(e) => onChange(e)} required placeholder="Email"/>
+            value={DOMPurify.sanitize(values.email)} onChange={(e) => onChange(e)} required placeholder="Email"/>
     <input type='password' value={values.password}
             id='password'
             className='button-Input'

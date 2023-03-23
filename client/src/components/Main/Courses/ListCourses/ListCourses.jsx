@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import CardCourse from "./CardCourse/CardCourse";
 import './ListCourses.css'
 
+
 const ListCourses = (props) => {
   const [search, setSearch] = useState("");
   const onChange = (e) => {
@@ -11,7 +12,7 @@ const ListCourses = (props) => {
   
   return (
     <section className="list">
-      <input className="button-Input" type="search" name="search" onChange={onChange} placeholder="Search" style={{ width: "350px" }}/>
+      <input className="button-Input" type="search" name="search" onChange={onChange} placeholder="Buscar curso " style={{ width: "350px" }}/>
       <h1>Nuestros cursos</h1>
       <p>Infórmate con nuestros cursos sobre todo lo relacionado con el VIH y las infecciones de transmisión sexual</p>
 

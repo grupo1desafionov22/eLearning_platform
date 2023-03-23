@@ -7,7 +7,7 @@ import { onLogout } from '../../../api/auth'
 import { unauthenticateUser } from '../../../redux/slices/authSlice'
 import Login from '../../Main/Login/Login'
 import './Nav.css'
-import {SiDiaspora } from "react-icons/si";
+import { escape } from 'lodash';
 
 const Nav = () => {
 
@@ -15,10 +15,10 @@ const Nav = () => {
   /*   const [loading, setLoading] = useState(true)
     const [protectedData, setProtectedData] = useState(null) */
 
-  const [search, setSearch] = useState("");
-  const onChange = (e) => {
-    setSearch(e.target.value);
-  };
+    const [search, setSearch] = useState("");
+    const onChange = (e) => {
+      setSearch(escape(e.target.value));
+    };
 
   const logout = async () => {
     try {
@@ -34,16 +34,10 @@ const Nav = () => {
   }
 
   return <nav className={"nav-bar"}>
-    <div className="allLogo">
-      <p className="logo">XOX< SiDiaspora color="#FFA500" size="40px" /></p>
-    </div>
-    <div>
-      <input type="search" name="search" onChange={onChange} placeholder="Search" />
-    </div>
-    <div>
-      <Link to="/login" className="filter">Acceder</Link>
-      <Link to="/admin" className="filter">Admin</Link>
-    </div>
+    <img  src="../../assets/xox transparente morado.png"/>
+    <Link to="/login" className="buttonCard"><p className="filter"> Acceder</p> </Link>
+    <Link to="/admin"  className="buttonCard"><p className="filter">Admin</p></Link>
+    
 
 
     <button onClick={() => logout()} className="button-Input" >Logout</button>
