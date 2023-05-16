@@ -69,6 +69,7 @@ DB_PASSWORD=***
 DB_URL_ATLAS=***
 ```
 Auth
+
 ```
 SECRET_KEY=***
 GOOGLE_CLIENT_ID=***
