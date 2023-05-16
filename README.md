@@ -1,25 +1,85 @@
-# Plataforma e-learning
+# E-learning Platform
 
-Proyecto para el Desafío de Tripulaciones realizado junto con las verticales de Ciberseguridad, Data Science, UX/UI y Marketing para el Grupo de trabajo sobre tratamientos del VIH.
+Project for 'Desafío de Tripulaciones' carried out in collaboration with the Cybersecurity, Data Science, UX/UI, and Marketing verticals for the HIV Treatment Working Group.
 
-Consta de dos roles, usuario y administrador.
+It consists of two roles: user and administrator.
 
-El usuario puede registarse y acceder mediante un formulario de registro o Google Auth.
+The user can register and access through a registration form or Google Auth.
 
 <img src='./client/public/Screenshot from 2023-05-16 22-31-27.png' alt="login" />
 
-Una vez dentro puede ver y realizar los cursos.
+Once inside, they can view and take courses.
 
 <img src='./client/public/Screenshot from 2023-05-16 22-31-51.png' alt="courses" />
 
-En el apartado Comunidad puede contactar con la asociación.
+In the Community section, they can contact the association.
 
 <img src='./client/public/Screenshot from 2023-05-16 22-32-14.png' alt="contact" />
 
-El administrador puede crear, editar y eliminar cursos. Así como hacer un seguimiento de los usuarios.
+The administrator can create, edit, and delete courses, as well as track user activities.
 
 
 <img src='./client/public/Screenshot from 2023-05-16 22-33-03.png' alt="create" />
+
+Folder structure
+
+ Store your react app in a folder named client in the root of your project
+
+ 2. Install dependencies
+  - `npm install `
+
+ 3. add script to backend package.json
+ ```
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "clientinstall": "npm install --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "deploy": "concurrently \"npm run server\" \"npm run client\""
+  },
+   ```
+  
+  4. Add .env variables
+
+
+  .env.example
+
+Client
+
+DB_URL_ATLAS=***
+REACT_APP_FIREBASE_API_KEY=***
+REACT_APP_FIREBASE_AUTH_DOMAIN=***
+REACT_APP_FIREBASE_PROJECT_ID=***
+REACT_APP_FIREBASE_STORAGE_BUCKET=***
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=***
+REACT_APP_FIREBASE_APP_ID=***
+
+Server
+
+#Claves SQL
+DB_HOST=***
+DB_USER=***
+DB_DATABASE=***
+DB_PASSWORD=***
+
+DB_URL_ATLAS=***
+
+#Claves Auth
+
+SECRET_KEY=***
+GOOGLE_CLIENT_ID=***
+GOOGLE_SECRET=***
+JWT_SECRET=***
+ 
+  
+
+  
+  5. run server and client with concurrently
+  
+  - `npm run dev`
+  
+  7. enjoy
 
 
 
