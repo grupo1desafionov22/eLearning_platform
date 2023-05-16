@@ -1,7 +1,6 @@
+# Plataforma e-learning
 
 Proyecto para el Desafío de Tripulaciones realizado junto con las verticales de Ciberseguridad, Data Science, UX/UI y Marketing para el Grupo de trabajo sobre tratamientos del VIH.
-
-# Plataforma e-learning
 
 Consta de dos roles, usuario y administrador.
 
