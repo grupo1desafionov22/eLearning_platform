@@ -47,6 +47,7 @@ Folder structure
 
 Client
 
+```
 DB_URL_ATLAS=***
 REACT_APP_FIREBASE_API_KEY=***
 REACT_APP_FIREBASE_AUTH_DOMAIN=***
@@ -54,25 +55,27 @@ REACT_APP_FIREBASE_PROJECT_ID=***
 REACT_APP_FIREBASE_STORAGE_BUCKET=***
 REACT_APP_FIREBASE_MESSAGING_SENDER_ID=***
 REACT_APP_FIREBASE_APP_ID=***
+```
 
 Server
 
-#Claves SQL
+SQL
+```
 DB_HOST=***
 DB_USER=***
 DB_DATABASE=***
 DB_PASSWORD=***
 
 DB_URL_ATLAS=***
-
-#Claves Auth
-
+```
+Auth
+```
 SECRET_KEY=***
 GOOGLE_CLIENT_ID=***
 GOOGLE_SECRET=***
 JWT_SECRET=***
  
-  
+```
 
   
   5. run server and client with concurrently
