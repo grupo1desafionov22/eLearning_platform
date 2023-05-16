@@ -1,3 +1,29 @@
+
+Proyecto para el Desafío de Tripulaciones realizado junto con las verticales de Ciberseguridad, Data Science, UX/UI y Marketing para el Grupo de trabajo sobre tratamientos del VIH.
+
+# Plataforma e-learning
+
+Consta de dos roles, usuario y administrador.
+
+El usuario puede registarse y acceder mediante un formulario de registro o Google Auth.
+
+<img src='./client/public/Screenshot from 2023-05-16 22-31-27.png' alt="login" />
+
+Una vez dentro puede ver y realizar los cursos.
+
+<img src='./client/public/Screenshot from 2023-05-16 22-31-51.png' alt="courses" />
+
+En el apartado Comunidad puede contactar con la asociación.
+
+<img src='./client/public/Screenshot from 2023-05-16 22-32-14.png' alt="contact" />
+
+El administrador puede crear, editar y eliminar cursos. Así como hacer un seguimiento de los usuarios.
+
+
+<img src='./client/public/Screenshot from 2023-05-16 22-33-03.png' alt="create" />
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
