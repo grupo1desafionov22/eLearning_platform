@@ -2,9 +2,17 @@
 
 Project for 'Desafío de Tripulaciones' carried out in collaboration with the Cybersecurity, Data Science, UX/UI, and Marketing verticals for the HIV Treatment Working Group.
 
+TECHNOLOGIES & TECHNIQUES 
+- JavaScript ES6+
+- Node.js with Express
+- Elephant Hosting / PgAdmin4 - SQL Database
+- REACT
+- Redux
+- SASS/SCSS
+
 It consists of two roles: user and administrator.
 
-The user can register and access through a registration form or Google Auth.
+The user can sign up and access through a registration form or Google Auth.
 
 <img src='./client/public/Screenshot from 2023-05-16 22-31-27.png' alt="login" />
 
@@ -85,6 +93,13 @@ JWT_SECRET=***
   
   7. enjoy
 
+## Authors
+
+[Gabriela García Serrano] (https://github.com/GabrielaSpace)
+
+[César Alba] (https://github.com/Cesario87)
+
+[Ana E. Iranzo Molina] (https://github.com/AnaIranzo)
 
 
 # Getting Started with Create React App
