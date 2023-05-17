@@ -95,11 +95,11 @@ JWT_SECRET=***
 
 ## Authors
 
-[Gabriela García Serrano] (https://github.com/GabrielaSpace)
+[Gabriela García Serrano](https://github.com/GabrielaSpace)
 
-[César Alba] (https://github.com/Cesario87)
+[César Alba](https://github.com/Cesario87)
 
-[Ana E. Iranzo Molina] (https://github.com/AnaIranzo)
+[Ana E. Iranzo Molina](https://github.com/AnaIranzo)
 
 
 # Getting Started with Create React App
